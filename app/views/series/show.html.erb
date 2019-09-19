@@ -1,2 +1,3 @@
 <h1><%= @series.name %> </h1>
 <p><%= @series.description %></p>
+<%= image_tag @series.picture.url if @series.picture? %>

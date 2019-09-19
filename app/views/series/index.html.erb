@@ -1,5 +1,10 @@
-<% @series.each do |series| %>
-
-  <%= link_to series.name, series%>
-
-<% end %>
+<div class="row">
+  
+    <% @series.each do |series| %>
+    <div class="col-sm-3">
+      <%= link_to series.name, series%>
+      <%= image_tag series.picture.url if series.picture? %>
+    </div>
+    <% end %>
+  
+</div>

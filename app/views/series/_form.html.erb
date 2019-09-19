@@ -1,0 +1,10 @@
+<%= form_for(@series) do |f| %>
+ <% if @series.errors.any? %>
+  <div id="error_explanation"></div>
+ <%end%>
+ <div class="field">
+   <%= f.label :picture %><br>
+   <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+ </div>
+ <%= f.submit "submit"%>
+<%end%>
