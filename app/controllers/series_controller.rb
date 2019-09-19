@@ -25,9 +25,10 @@ class SeriesController < ApplicationController
   def create 
     @series = Series.new(series_params)
     if @series.save
+      flash[:success] = 'Success upload!'
       redirect_to @series
     else  
-      redirect_to root
+      render 'new'
     end 
   end 
   
@@ -38,7 +39,7 @@ class SeriesController < ApplicationController
     end
 
     def series_params
-      params.require(:series).permit(:picture)
+      params.require(:series).permit(:name, :description, :picture)
     end
 
 end

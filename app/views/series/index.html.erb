@@ -1,10 +1,10 @@
+<%= link_to "New", new_series_path %>
+
 <div class="row">
-  
     <% @series.each do |series| %>
-    <div class="col-sm-3">
-      <%= link_to series.name, series%>
-      <%= image_tag series.picture.url if series.picture? %>
+      <div class="col-sm-3">
+        <%= link_to series.name, series%>
+        <%= image_tag series.picture.url if series.picture? %>
     </div>
-    <% end %>
-  
+  <% end %>
 </div>
