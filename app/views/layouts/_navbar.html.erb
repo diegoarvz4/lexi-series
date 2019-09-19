@@ -1,13 +1,21 @@
 <nav class="navbar navbar-default">
  <div class="container-fluid">
    <div class="navbar-header">
-     <a class="navbar-brand" href="#">LEXI SERIES</a>
+     <a class="navbar-brand" href="#">Lexi Dub&Sub</a>
    </div>
    <ul class="nav navbar-nav">
-     <li class="active"><a href="#">Home</a></li>
-     <li><%= link_to "Series", series_index_path%></li>
-     <li><a href="#">Page 2</a></li>
-     <li><a href="#">Page 3</a></li>
+     <li class=""><%= link_to "Home", root_path%></li>
+     <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Series <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><%= link_to "Index", series_index_path%></li>
+          <li><%= link_to "New", new_series_path%></li>
+          
+          <li><a href="#">Something else here</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#">Separated link</a></li>
+        </ul>
+      </li>
    </ul>
  </div>
 </nav>

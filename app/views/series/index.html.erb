@@ -1,10 +1,13 @@
-<%= link_to "New", new_series_path %>
-
 <div class="row">
     <% @series.each do |series| %>
-      <div class="col-sm-3">
-        <%= link_to series.name, series%>
-        <%= image_tag series.picture.url if series.picture? %>
+      <div class="col-sm-4">
+        <div class="series-container">
+          <h1><%= link_to series.name, series%></h1>
+          <p><%= series.description %></p>
+          <div class="series-picture">
+            <%= image_tag series.picture.url, class:'picture img-responsive img-rounded' if series.picture? %>
+          </div>
+        </div>
     </div>
   <% end %>
 </div>

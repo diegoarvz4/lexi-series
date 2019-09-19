@@ -1,3 +1,29 @@
 // Place all the styles related to the Series controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.series{
+
+ &-container{
+   border: 1px solid gray;
+   border-radius: 10px;
+   padding: 10px;
+   
+ }
+
+ &-picture{
+   max-height: 200px;
+   width: 100%;
+   overflow: hidden;
+ }
+
+ &-show-picture{
+  display: flex;
+  justify-content: center;
+  
+  img{
+   max-height: 50vh;
+  }
+ }
+
+}
+

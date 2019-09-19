@@ -1,3 +1,9 @@
-<h1><%= @series.name %> </h1>
-<p><%= @series.description %></p>
-<%= image_tag @series.picture.url if @series.picture? %>
+<div class="row">
+ <div class="col-sm-12 series-show">
+  <h1><%= @series.name %> </h1>
+  <p><%= @series.description %></p>
+ </div>
+ <div class="col-sm-12 series-show-picture">
+  <%= image_tag @series.picture.url, class: 'img-rounded' if @series.picture? %>
+ </div>
+</div>
