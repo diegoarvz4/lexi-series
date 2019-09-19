@@ -1,9 +1,44 @@
 <div class="row">
- <div class="col-sm-12 series-show">
-  <h1><%= @series.name %> </h1>
-  <p><%= @series.description %></p>
- </div>
- <div class="col-sm-12 series-show-picture">
-  <%= image_tag @series.picture.url, class: 'img-rounded' if @series.picture? %>
- </div>
+  <div class="col-sm-6 series-show">
+    <h1><%= @series.name %> </h1>
+    <span class="series-container-title series-show-edit">
+      <%= link_to "#{image_tag('edit.svg', class:'picture img-responsive img-rounded')}".html_safe, edit_series_path(@series) %>
+    </span>
+    <p><%= @series.description %></p>
+  </div>
+  <div class="col-sm-6 series-show-picture">
+    <%= image_tag @series.picture.url, class: 'img-rounded' if @series.picture? %>
+  </div>
 </div>
+
+<hr>
+
+<div class="row">
+  <div class="col-sm-6 series-show">
+    <h1>Episodes</h1>
+    <div><%= link_to "#{image_tag('add.svg', class:'series-show-add')}".html_safe, new_episode_path(series: @series.id) %></div>
+    <ul class="ist-group">
+      <% @series.episodes.each do |episode|%>
+        <li class="list-group-item"><%= link_to "Ep#{episode.number}", episode %></li>
+      <%end%>
+    </ul>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-sm-6 series-show">
+    <h1>Characters</h1>
+    <div><%= link_to "#{image_tag('add.svg', class:'series-show-add')}".html_safe, new_character_path(series: @series.id) %></div>
+    <ul class="ist-group">
+      <% @characters.each do |character|%>
+        <li class="list-group-item series-show-character">
+          <%= image_tag character.picture.url if character.picture? %>
+          <span><%= link_to "#{character.name}", character %></span>
+        </li>
+      <%end%>
+    </ul>
+  </div>
+</div>
+

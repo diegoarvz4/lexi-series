@@ -7,6 +7,8 @@ class SeriesController < ApplicationController
 
   def show
     @series = Series.find_by(id: params[:id])
+    @episodes = @series.episodes
+    @characters = @series.characters
   end
 
   def new 
@@ -14,9 +16,19 @@ class SeriesController < ApplicationController
   end
 
   def edit
+    @series = Series.find_by(id: params[:id])
   end 
 
   def update 
+    series = Series.find_by(id: params[:id])
+    series.assign_attributes(series_params)
+
+    if series.save 
+      flash[:success] = "Series updated!"
+      redirect_to series
+    else 
+      render 'edit'
+    end 
   end 
 
   def destroy 

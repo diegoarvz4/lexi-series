@@ -1,3 +1,45 @@
 // Place all the styles related to the Episodes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.episodes{
+
+ &-title{
+  font-weight: bold;
+  padding-top: 20px; 
+ }
+
+ &-series{
+
+  &-container{
+   display: flex; 
+   flex-wrap: nowrap;
+   align-items: center;
+   padding: 20px 0;
+
+   h5{
+    padding-left: 20px;
+   }
+  }
+
+  font-weight: bold;
+  &-image{
+   width: 50px;
+   height: 50px;
+   border-radius: 100%;
+  }
+ }
+
+ &-resume{
+  h6{
+   font-size: 30px;
+   font-weight: bold;
+   margin-bottom: 20px;
+  }
+
+  p{
+   font-size: 20px;
+  }
+ }
+
+}

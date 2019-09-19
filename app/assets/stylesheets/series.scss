@@ -7,6 +7,18 @@
    border: 1px solid gray;
    border-radius: 10px;
    padding: 10px;
+
+   &-title{
+     display: flex;
+     flex-wrap: no-wrap; 
+     align-items: flex-start;
+     img{
+       width: 30px;
+       padding: 6px;
+       border: 1px solid gray; 
+       border-radius: 50px;
+     }
+   }
    
  }
 
@@ -16,9 +28,39 @@
    overflow: hidden;
  }
 
+ &-show{
+   &-edit{
+     margin-bottom: 40px;
+   }
+
+   h1{
+     font-weight: bold;
+   }
+
+   p{
+     font-size: 15px;
+   }
+
+   &-add{
+    width: 20px; 
+    border: 1px solid gray;
+    border-radius: 100px;
+   }
+
+   &-character{
+     display: flex;
+     flex-wrap: wrap;
+     img{
+       width: 20px;
+       border-radius: 20px;
+     }
+   }
+ }
+
  &-show-picture{
   display: flex;
   justify-content: center;
+  padding-top: 20px; 
   
   img{
    max-height: 50vh;
