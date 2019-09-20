@@ -9,7 +9,7 @@ class EpisodesController < ApplicationController
     @episode = @series.episodes.build(episode_params)
     if @episode.save 
       flash[:success] = '¡Episodio agregado!'
-      redirect_to episode
+      redirect_to @episode
     else
       render 'new'
     end 

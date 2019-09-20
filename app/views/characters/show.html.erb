@@ -24,18 +24,20 @@
 <div class="row">
   <div class="col-sm-6 series-show">
     <h1>Relaciones Personajes</h1>
-    <div>
+    <div class="characters-add">
       <%= link_to "#{image_tag('add.svg', class:'series-show-add')}".html_safe, 
-          new_relationship_path
+          new_relationship_path(series_id: @character.series.id, character_id: @character.id)
       %>
     </div>
     
     <ul class="list-group">
       <% @characters_related.each do |character|%>
-        <li class="list-group-item series-show-character">
+        <li class="list-group-item series-show-character characters-list">
           
-          <%= image_tag character.picture.url if character.picture? %>
-          <span><%= link_to "#{character.name}", relationship_path(id: Relationship.find_by(character_id: @character.id, related: character.id).id ) %></span>
+          <%= image_tag character.picture.url, class: "characters-img" if character.picture? %>
+          <% if relationship?(@character, character) %>
+            <span class="characters-related"><%= link_to "#{character.name}", relationship_path(relationship(@character, character).id) %></span>
+          <% end %>
         </li>
       <%end%>
     </ul>

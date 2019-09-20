@@ -1,0 +1,27 @@
+<div class='form-container'>
+  <h1><%= @character.name %></h1>
+  <%= form_for(@relationship) do |f| %>
+  <% if  @relationship && @relationship.errors.any? %>
+    <div>
+      <% @relationship.errors.full_messages.each do |error|%>
+        <hr>
+        <h4> <%= error %> </h4>
+        <hr>
+      <% end %>
+    </div>
+  <% end %>
+    <div class="field">
+      <%= f.hidden_field :character_id, :value => @character.id %>
+
+      <div class="form-group">
+        <%= f.label :related, "Relación con" %>
+        <%= f.select :related_id, @character_options, include_blank: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :description, "Description" %>
+        <%= f.text_field :description, class: 'form-control'%>
+      </div>
+    <%= f.submit "Create Relationship", class: 'btn btn-default form-button'%>
+  <%end%>
+</div>

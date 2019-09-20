@@ -36,6 +36,8 @@ class CharactersController < ApplicationController
   def show
     @character = Character.find_by(id: params[:id])
     @characters_related = @character.relationships.map{|relationship| relationship.related} # (&:related)
+    @characters_related += @character.inverse_relationships.map{|relationship| relationship.character}
+    @characters_related.sort_by{ |character| character.name}
   end
 
   private 
