@@ -6,11 +6,12 @@ class EpisodesController < ApplicationController
 
   def create
     @series = Series.find_by(id: params[:episode][:series_id])
-    episode = @series.episodes.build(episode_params)
-    if episode.save 
+    @episode = @series.episodes.build(episode_params)
+    if @episode.save 
+      flash[:success] = '¡Episodio agregado!'
       redirect_to episode
     else
-      render 'new'   
+      render 'new'
     end 
   end
 
@@ -21,7 +22,7 @@ class EpisodesController < ApplicationController
       flash[:success] = "Episode #{@episode.number} Updated!"
       redirect_to @episode
     else
-      render 'new'
+      render 'edit'
     end
   end
 
@@ -35,6 +36,10 @@ class EpisodesController < ApplicationController
   def show
     @episode = Episode.find_by(id: params[:id])
     @series = @episode.series
+  end
+
+  def index
+    redirect_to request.referrer
   end
 
   private 

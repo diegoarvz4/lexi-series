@@ -35,6 +35,7 @@ class CharactersController < ApplicationController
 
   def show
     @character = Character.find_by(id: params[:id])
+    @characters_related = @character.relationships.map{|relationship| relationship.related} # (&:related)
   end
 
   private 

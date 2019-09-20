@@ -1,0 +1,32 @@
+<div>Editar Relación <%= link_to "#{image_tag('add.svg', class:'series-show-add')}".html_safe, edit_relationship_path(@relationship.id) %></div>
+
+<hr>
+  <h1><%= @character.series.name %></h1>
+<hr>
+<div class="row relationships">
+  <div class="col-sm-12 col-md-2">
+    <div class="row">
+      <h1><%= @character.name %> </h1>
+      <p><%= @character.description %></p>  
+      <%= image_tag @character.picture.url, class: 'img-rounded img-responsive' if @character.picture? %>
+    </div>
+  </div>
+
+  <div class="col-sm-12 col-md-8">
+    <p class="relationships-description">
+      <q>
+        <%= @relationship.description %>
+      </q>
+    </p>
+  </div>
+
+  <div class="col-sm-12 col-md-2">
+    <div class="row">
+      <h1><%= @related.name %> </h1>
+      <p><%= @related.description %></p>  
+      <%= image_tag @related.picture.url, class: 'img-rounded img-responsive' if @related.picture? %>
+    </div>
+  </div>
+
+</div>
+

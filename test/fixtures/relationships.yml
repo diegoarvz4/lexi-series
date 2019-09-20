@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  description: MyString
+  character: one
+  related: one
+
+two:
+  type: 
+  description: MyString
+  character: two
+  related: two

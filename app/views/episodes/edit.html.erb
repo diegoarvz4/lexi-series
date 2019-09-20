@@ -1,17 +1,17 @@
 <div class='form-container'>
+  
   <%= form_for(@episode) do |f| %>
-  <% if  @episode && @episode.errors.any? %>
-    <div>
-      <% @episode.errors.full_messages.each do |error|%>
-        <hr>
-        <h4> <%= error[0..12] %> </h4>
-        <hr>
-      <% end %>
-    </div>
-  <% end %>
+  
     <div class="field">
       <h1><%= @episode.series.name %></h1>
-
+      <% if  @episode && @episode.errors.any? %>
+        <div>
+          <% @episode.errors.full_messages.each do |error|%>
+            <h4> <%= error %> </h4>
+            <hr>
+          <% end %>
+        </div>
+      <% end %>
       <div class="form-group">
         <%= f.label :number, "Episode #" %>
         <%= f.number_field :number, class: 'form-control', :value => @episode.number%>

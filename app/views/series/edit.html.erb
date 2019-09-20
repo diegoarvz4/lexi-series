@@ -3,9 +3,7 @@
   <% if  @series && @series.errors.any? %>
     <div>
       <% @series.errors.full_messages.each do |error|%>
-        <hr>
-        <h4> <%= error[0..12] %> </h4>
-        <hr>
+        <h4> <%= error %> </h4>
       <% end %>
     </div>
   <% end %>

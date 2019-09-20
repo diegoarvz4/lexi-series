@@ -18,3 +18,26 @@
     <%= image_tag @character.picture.url, class: 'img-rounded' if @character.picture? %>
   </div>
 </div>
+
+<hr>
+
+<div class="row">
+  <div class="col-sm-6 series-show">
+    <h1>Relaciones Personajes</h1>
+    <div>
+      <%= link_to "#{image_tag('add.svg', class:'series-show-add')}".html_safe, 
+          new_relationship_path
+      %>
+    </div>
+    
+    <ul class="list-group">
+      <% @characters_related.each do |character|%>
+        <li class="list-group-item series-show-character">
+          
+          <%= image_tag character.picture.url if character.picture? %>
+          <span><%= link_to "#{character.name}", relationship_path(id: Relationship.find_by(character_id: @character.id, related: character.id).id ) %></span>
+        </li>
+      <%end%>
+    </ul>
+  </div>
+</div>
