@@ -1,6 +1,8 @@
 
 <div class="episodes-series-container">
-  <%= image_tag @character.series.picture.url, class: 'episodes-series-image ' if @character.series.picture? %>
+  <div class="episodes-series-image">
+    <%= image_tag @character.series.picture.url if @character.series.picture? %>
+  </div>
   <h5 class="episodes-series"><%= link_to @character.series.name, @character.series %></h5> 
 </div>
 
@@ -10,7 +12,7 @@
   <div class="col-sm-6 series-show">
     <h1><%= @character.name %> </h1>
     <span class="series-container-title series-show-edit">
-      <%= link_to "#{image_tag('edit.svg', class:'picture img-responsive img-rounded')}".html_safe, edit_character_path(@character) %>
+      <%= link_to "#{image_tag('edit.svg', class:'picture img-responsive')}".html_safe, edit_character_path(@character) %>
     </span>
     <p><%= @character.description %></p>
   </div>

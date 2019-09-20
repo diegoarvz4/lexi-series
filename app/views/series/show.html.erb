@@ -1,5 +1,7 @@
 <div class="row">
+  
   <div class="col-sm-6 series-show">
+  <div><%= link_to "Back", request.referrer %></div>
     <h1><%= @series.name %> </h1>
     <span class="series-container-title series-show-edit">
       <%= link_to "#{image_tag('edit.svg', class:'picture img-responsive img-rounded')}".html_safe, edit_series_path(@series) %>
@@ -7,7 +9,7 @@
     <p><%= @series.description %></p>
   </div>
   <div class="col-sm-6 series-show-picture">
-    <%= image_tag @series.picture.url, class: 'img-rounded' if @series.picture? %>
+    <%= link_to "#{image_tag(@series.picture.url, class: 'img-rounded')}".html_safe, @series if @series.picture?%>
   </div>
 </div>
 

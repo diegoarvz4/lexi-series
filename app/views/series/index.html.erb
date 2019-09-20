@@ -6,10 +6,11 @@
             <h1><%= link_to series.name, series%></h1>
             <%= link_to "#{image_tag('edit.svg', class:'picture img-responsive img-rounded')}".html_safe, edit_series_path(series) %>
           </div>
-          <p><%= truncate(series.description, length: 125, omission: '... (continued)') %></p>
+          <p><%= truncate(series.description, length: 125, omission: '...(continued)') %></p>
           <div class="series-picture">
-            <%= image_tag series.picture.url, class:'picture img-responsive img-rounded' if series.picture? %>
+            <%= link_to "#{image_tag(series.picture.url, class: 'img-rounded')}".html_safe, series if series.picture?%>
           </div>
+          <hr>
           <span><%= link_to "#{count_episodes(series)} Episodes", series %>  </span>
           <span>|</span>
           <span><%= link_to 'Add Episode', new_episode_path(series: series.id) %>
