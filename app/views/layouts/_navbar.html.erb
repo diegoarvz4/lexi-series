@@ -1,28 +1,40 @@
 <nav class="navbar navbar-default">
  <div class="container-fluid">
    <div class="navbar-header">
-     <a class="navbar-brand" href="#">Lexi Dub&Sub</a>
+     <a class="navbar-brand" href="#">LEXI DUB SUB</a>
    </div>
-   <ul class="nav navbar-nav">
-     <li class=""><%= link_to "Home", root_path%></li>
-     <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Series <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><%= link_to "Index", series_index_path%></li>
-          <li><%= link_to "New", new_series_path%></li>
-        </ul>
-      </li>
-   </ul>
+   <% if current_user %>
+    <ul class="nav navbar-nav">
+      <li class=""><%= link_to "Home", root_path%></li>
+      <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Series <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Index", series_index_path%></li>
+            <li><%= link_to "New", new_series_path%></li>
+          </ul>
+        </li>
+    </ul>
+   <%end%>
+
    <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User <span class="caret"></span></a>
+        <% if current_user %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.username %> <span class="caret"></span></a>          
           <ul class="dropdown-menu">
             <li><a href="#">Dashboard</a></li>
             <li><a href="#">Settings</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Sign out</a></li>
+            <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
           </ul>
         </li>
+        <%else%>
+          <li>
+            <%= link_to "Sign up", new_user_registration_path%>
+          </li>
+          <li>
+            <%= link_to "Log in", new_user_session_path%>
+          </li>
+        <%end%>
       </ul>
  </div>
  
