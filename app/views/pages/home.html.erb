@@ -2,10 +2,25 @@
   <div class="row">
     <div class="home-title">
       <%= image_tag 'lexi.svg' %>
-      <h1><%= current_user.username %></h1>
+      <h1><%= current_user.username %>
+          <% if current_user.admin?%>
+            <span>(Admin)</span>
+          <%end%>
+        </h1>
     </div>
     <hr>
-    <h2>My series</h2>
+    <h2>Mis series</h2>
+    <% unless @series.empty? %>
+      <ul class="list-group">
+        <% @series.each do |series|%>
+          <li class="list-group-item"><%= series %></li>
+        <%end%>
+      </ul>
+    <% else %>
+      <span>You don't have any series for now</span>
+    <% end %>
+    <hr>
+    <h2><%= link_to "Users", users_path %></h2>
     <hr>
     <h3>Últimas actualizaciones (resúmenes y relaciones)</h3>
   </div>

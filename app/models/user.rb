@@ -5,4 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :series_requests, foreign_key: 'requester_id', class_name: 'SeriesRequest'
   has_many :series_invitations, foreign_key: 'receiver_id', class_name: 'SeriesRequest'
+  has_and_belongs_to_many :series
+ 
+  def self.admin?
+    self.admin
+  end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_21_194820) do
+ActiveRecord::Schema.define(version: 2019_09_22_190444) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,8 +61,17 @@ ActiveRecord::Schema.define(version: 2019_09_21_194820) do
     t.boolean "confirmed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "series_id"
     t.index ["receiver_id"], name: "index_series_requests_on_receiver_id"
     t.index ["requester_id"], name: "index_series_requests_on_requester_id"
+    t.index ["series_id"], name: "index_series_requests_on_series_id"
+  end
+
+  create_table "series_users", id: false, force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "series_id", null: false
+    t.index ["series_id", "user_id"], name: "index_series_users_on_series_id_and_user_id"
+    t.index ["user_id", "series_id"], name: "index_series_users_on_user_id_and_series_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -83,6 +92,7 @@ ActiveRecord::Schema.define(version: 2019_09_21_194820) do
   add_foreign_key "episodes", "series"
   add_foreign_key "relationships", "characters"
   add_foreign_key "relationships", "characters", column: "related_id"
+  add_foreign_key "series_requests", "series"
   add_foreign_key "series_requests", "users", column: "receiver_id"
   add_foreign_key "series_requests", "users", column: "requester_id"
 end

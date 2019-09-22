@@ -15,3 +15,10 @@
     }
   }
 }
+
+.users-list-group-item{
+  display: flex !important;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}

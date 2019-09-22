@@ -1,0 +1,19 @@
+<h1>Users</h1>
+<ul class="list-group">
+  <%@users.each do |user|%>
+    <li class="list-group-item users-list-group-item">
+      <%= user.username %>
+      <% if current_user.admin? %>
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Invite
+          <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Series 1</a></li>
+            <li><a href="#">Series 2</a></li>
+            <li><a href="#">Series 3</a></li>
+          </ul>
+          </div>
+        <% end %>
+    </li>
+  <%end%>
+</ul>

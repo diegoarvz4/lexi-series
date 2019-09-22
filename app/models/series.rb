@@ -4,4 +4,5 @@ class Series < ApplicationRecord
   has_many :characters
   validates :name, presence: true
   validates :description, presence: true
+  has_and_belongs_to_many :users
 end

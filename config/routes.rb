@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   authenticated :user do
     root to: 'pages#home'
   end
@@ -13,5 +14,7 @@ Rails.application.routes.draw do
   resources :episodes
   resources :characters
   resources :relationships
+  resources :users, only: [:index]
+  resources :series_requests, only: [:new, :edit, :update]
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret'}
 end
