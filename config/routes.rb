@@ -15,6 +15,6 @@ Rails.application.routes.draw do
   resources :characters
   resources :relationships
   resources :users, only: [:index]
-  resources :series_requests, only: [:new, :edit, :update]
+  resources :series_requests, only: [:create, :edit, :update]
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret'}
 end

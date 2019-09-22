@@ -7,7 +7,5 @@ class User < ApplicationRecord
   has_many :series_invitations, foreign_key: 'receiver_id', class_name: 'SeriesRequest'
   has_and_belongs_to_many :series
  
-  def self.admin?
-    self.admin
-  end
+
 end

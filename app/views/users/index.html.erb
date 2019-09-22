@@ -1,19 +1,22 @@
-<h1>Users</h1>
+<div>
+  <h1>Usuarios</h1>
+</div>
+<hr>
 <ul class="list-group">
   <%@users.each do |user|%>
     <li class="list-group-item users-list-group-item">
       <%= user.username %>
       <% if current_user.admin? %>
         <div class="dropdown">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Invite
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Invita
           <span class="caret"></span></button>
           <ul class="dropdown-menu">
-            <li><a href="#">Series 1</a></li>
-            <li><a href="#">Series 2</a></li>
-            <li><a href="#">Series 3</a></li>
+            <% @series_hash.each do |series| %>
+              <li> <%= link_to series[1], series_requests_path(series_id: series[0], receiver_id: user.id), method: :post %> </li>
+            <%end%>
           </ul>
-          </div>
-        <% end %>
+        </div>
+      <% end %>
     </li>
   <%end%>
 </ul>
