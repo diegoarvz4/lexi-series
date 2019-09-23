@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   resources :episodes
   resources :characters
   resources :relationships
-  resources :users, only: [:index]
+  resources :users, only: [:index, :show]
   resources :series_requests, only: [:create, :edit, :update]
-  devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret'}
+  devise_for :users, path: '', 
+                     path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret' }, 
+                     controllers: { registrations: 'registrations' }
 end
