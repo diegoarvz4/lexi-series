@@ -8,7 +8,7 @@ class EpisodesController < ApplicationController
     @series = Series.find_by(id: params[:episode][:series_id])
     @episode = @series.episodes.build(episode_params)
     if @episode.save 
-      flash[:success] = '¡Episodio agregado!'
+      flash.notice = '¡Episodio agregado!'
       redirect_to @episode
     else
       render 'new'
@@ -19,7 +19,7 @@ class EpisodesController < ApplicationController
     @episode = Episode.find_by(id: params[:id])
     @episode.assign_attributes(episode_params)
     if @episode.save 
-      flash[:success] = "Episode #{@episode.number} Updated!"
+      flash.notice = "Episode #{@episode.number} Updated!"
       redirect_to @episode
     else
       render 'edit'

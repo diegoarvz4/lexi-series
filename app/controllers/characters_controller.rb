@@ -13,7 +13,7 @@ class CharactersController < ApplicationController
     @character = Character.find_by(id: params[:id])
     @character.assign_attributes(character_params)
     if @character.save 
-      flash[:success] = "#{@character.name} Updated!"
+      flash.notice = "#{@character.name} Updated!"
       redirect_to @character
     else
       render 'new'

@@ -24,7 +24,7 @@ class SeriesController < ApplicationController
     series.assign_attributes(series_params)
 
     if series.save 
-      flash[:success] = "Series updated!"
+      flash.notice = "¡Serie actualizada!"
       redirect_to series
     else 
       render 'edit'

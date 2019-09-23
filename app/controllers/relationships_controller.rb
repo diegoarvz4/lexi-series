@@ -17,7 +17,7 @@ class RelationshipsController < ApplicationController
 
     @relationship = Relationship.new(relationship_params)
     if @relationship.save
-      flash[:success] = 'Relationship created!'
+      flash.notice = '¡Relation creada!'
       redirect_to @relationship
     else
       render 'new'
@@ -28,7 +28,7 @@ class RelationshipsController < ApplicationController
     @relationship = Relationship.find_by(id: params[:id])
     @relationship.assign_attributes(relationship_params)
     if @relationship.save
-      flash[:success] = '¡Relación Actualizada!'
+      flash.notice = '¡Relación Actualizada!'
       redirect_to @relationship
     else
       render 'edit'

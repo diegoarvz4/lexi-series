@@ -5,7 +5,7 @@
     <div>
       <% @relationship.errors.full_messages.each do |error|%>
         <hr>
-        <h4> <%= error %> </h4>
+        <div class="alert alert-danger"> <%= error %> </div>
         <hr>
       <% end %>
     </div>
