@@ -18,5 +18,22 @@ class SeriesRequestsController < ApplicationController
   end
 
   def update
+    @series_request = SeriesRequest.find_by(id: params[:id])
+    @series_request.confirmed = true
+    series = Series.find_by(id: @series_request.series_id)
+    if @series_request.save
+      current_user.series << series
+      flash.notice = "¡Bienvenida(o) a #{series.name}!"
+      redirect_to users_path
+    else 
+      render 'error'
+    end
   end
+
+  private 
+
+  def request_params
+    params.permit(:receiver_id, :series_id)
+  end
+
 end

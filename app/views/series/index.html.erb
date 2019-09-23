@@ -1,3 +1,6 @@
+<% if @series.empty? %>
+  <div class="alert alert-warning"> No tienes series disponibles </div>
+<%end%>
 <div class="row">
     <% @series.each do |series| %>
       <div class="col-sm-4">

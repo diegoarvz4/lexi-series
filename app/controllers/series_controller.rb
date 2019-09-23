@@ -2,7 +2,11 @@ class SeriesController < ApplicationController
 
 
   def index
-    @series = Series.all
+    if current_user.admin?
+      @series = Series.all
+    else 
+      @series = current_user.series
+    end
   end
 
   def show
@@ -24,7 +28,7 @@ class SeriesController < ApplicationController
     series.assign_attributes(series_params)
 
     if series.save 
-      flash.notice = "¡Serie actualizada!"
+      flash.notice = '¡Serie actualizada!'
       redirect_to series
     else 
       render 'edit'

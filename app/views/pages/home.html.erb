@@ -9,11 +9,25 @@
         </h1>
     </div>
     <hr>
+    <% unless @series_invitations.empty? || !not_confirmed(@series_invitations) %>
+      <h2>Tienes invitaciones</h2>
+      <ul class="list-group">
+        <% @series_invitations.each do |invitation| %>
+          <% unless invitation.confirmed %>
+            <li class="list-group-item users-list-group-item">
+              <%= series_invitation(invitation.series_id).name %>
+              <%= link_to "Aceptar", series_request_path(invitation.id), method: :patch, class: 'btn btn-primary'%>
+            </li>
+          <% end%>
+        <%end%>
+      </ul>
+    <%end%>
+
     <h2>Mis series</h2>
     <% unless @series.empty? %>
       <ul class="list-group">
         <% @series.each do |series|%>
-          <li class="list-group-item"><%= series %></li>
+          <li class="list-group-item"><%= link_to series.name, series %></li>
         <%end%>
       </ul>
     <% else %>
