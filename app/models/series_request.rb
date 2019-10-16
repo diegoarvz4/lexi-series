@@ -5,7 +5,9 @@ class SeriesRequest < ApplicationRecord
   # validate :sent?
 
   def sent?
-    if SeriesRequest.where(series_id: series_id, receiver_id: receiver_id, requester_id: requester_id).exists?
+    if SeriesRequest.where(series_id: series_id,
+                           receiver_id: receiver_id,
+                           requester_id: requester_id).exists?
       errors.add(:series_request, 'Invitation already sent!')
     end
   end

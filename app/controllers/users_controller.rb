@@ -6,6 +6,13 @@ class UsersController < ApplicationController
     @users = User.all
     @series = Series.all
     @series_hash = hash_series(@series)
+
+    @customers_roles = @users.map{|user| user.roles.select{ |role| role.category == 'CUSTOMER' } }.select{|obj| !obj.empty?}.flatten!
+    @workers_roles = @users.map{|user| user.roles.select{ |role| role.category == 'WORK' } }.select{|obj| !obj.empty?}.flatten!
+  end
+
+  def show 
+    @user = User.find_by(id: params[:id])
   end
 
   private

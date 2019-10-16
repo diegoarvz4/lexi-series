@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_23_182838) do
+ActiveRecord::Schema.define(version: 2019_09_23_192653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,14 @@ ActiveRecord::Schema.define(version: 2019_09_23_182838) do
     t.datetime "updated_at", null: false
     t.index ["character_id"], name: "index_relationships_on_character_id"
     t.index ["related_id"], name: "index_relationships_on_related_id"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_roles_on_user_id"
   end
 
   create_table "series", force: :cascade do |t|
@@ -93,6 +101,7 @@ ActiveRecord::Schema.define(version: 2019_09_23_182838) do
   add_foreign_key "episodes", "series"
   add_foreign_key "relationships", "characters"
   add_foreign_key "relationships", "characters", column: "related_id"
+  add_foreign_key "roles", "users"
   add_foreign_key "series_requests", "series"
   add_foreign_key "series_requests", "users", column: "receiver_id"
   add_foreign_key "series_requests", "users", column: "requester_id"

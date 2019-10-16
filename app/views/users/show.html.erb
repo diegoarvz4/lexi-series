@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col-sm-12">
-    <h1><%= current_user.username %></h1>
+    <h1><%=  @user.username %></h1>
   </div>
   <div>
   <div class="col-sm-6">
-    <%= image_tag(current_user.avatar.url, class:'img-responsive thumbnail') if current_user.avatar? %>
+    <%= image_tag(@user.avatar.url, class:'img-responsive thumbnail') if @user.avatar? %>
   </div>
   <hr>
-  <h2><%= current_user.email %></h2>
+  <h2><%= @user.email %></h2>
   <h2>Number of series: <%= current_user.series.count %></h2>
 </div>

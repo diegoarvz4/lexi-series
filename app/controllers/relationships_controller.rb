@@ -3,18 +3,10 @@ class RelationshipsController < ApplicationController
     @relationship = Relationship.new
     @series = Series.find_by(id: params[:series_id])
     @character = Character.find_by(id: params[:character_id])
-    @characters = @series.characters.reject{ |ch|
-                  ch == @character
-                }
-    @characters -= @character.relationships.map{|relationship| relationship.related} - @character.inverse_relationships.map{|relationship| relationship.related} 
-    @character_options = Hash.new
-    @characters.each do |character|
-      @character_options[character.name] = character.id
-    end
+    @characters = related_characters(@character)
   end
 
   def create
-
     @relationship = Relationship.new(relationship_params)
     if @relationship.save
       flash.notice = '¡Relation creada!'
@@ -23,7 +15,7 @@ class RelationshipsController < ApplicationController
       render 'new'
     end
   end
-  
+
   def update
     @relationship = Relationship.find_by(id: params[:id])
     @relationship.assign_attributes(relationship_params)
@@ -50,6 +42,14 @@ class RelationshipsController < ApplicationController
   private
 
   def relationship_params
-    params.require(:relationship).permit(:character_id, :related_id, :description)
+    params.require(:relationship).permit(:character_id,
+                                         :related_id,
+                                         :description)
+  end
+
+  def related_characters(current_character)
+    characters = @series.characters.reject{|character| character == current_character}
+    characters -= current_character.relationships.map(&:related)
+    characters -= current_character.inverse_relationships.map(&:character)
   end
 end

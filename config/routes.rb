@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   authenticated :user do
     root to: 'pages#home'
   end
@@ -10,6 +9,7 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'pages#home'
+  resources :roles, only: [:create]
   resources :series
   resources :episodes
   resources :characters

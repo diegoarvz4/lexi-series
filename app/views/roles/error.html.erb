@@ -1,0 +1,9 @@
+<% if  @role && @role.errors.any? %>
+    <div>
+      <% @role.errors.full_messages.each do |error|%>
+        <hr>
+        <div class="alert alert-danger"> <%= error %> </div>
+        <hr>
+      <% end %>
+    </div>
+  <% end %>
