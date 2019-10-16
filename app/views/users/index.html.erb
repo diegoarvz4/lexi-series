@@ -7,35 +7,37 @@
     <li class="list-group-item users-list-group-item">
       <%= link_to user.username, user %>
       <% if current_user.admin? %>
-          
-        <div class="btn-group btn-group-inline">
-          <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">Role +
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li> 
-              <%= link_to 'Trabajador', roles_path(user_id: user.id, category: 'WORK'), method: :post%>
-            </li>
-            <li> 
-              <%= link_to 'Empresa', roles_path(user_id: user.id, category: 'CUSTOMER'), method: :post%>
-            </li>
-          </ul>
-        </div >
+        <div class="users-admin-role">  
+          <div class="btn-group btn-group-inline">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">Role +
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li> 
+                <%= link_to 'Trabajador', roles_path(user_id: user.id, category: 'WORK'), method: :post%>
+              </li>
+              <li> 
+                <%= link_to 'Empresa', roles_path(user_id: user.id, category: 'CUSTOMER'), method: :post%>
+              </li>
+            </ul>
+          </div >
 
-        <div class="btn-group btn-group-inline">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Invita
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <% @series_hash.each do |series| %>
-              <% unless invited?(user,series[0])%>
-                <li> 
-                  <%= link_to series[1], series_requests_path(series_id: series[0], receiver_id: user.id), method: :post %> 
-                </li>
-              <%end %>
-            <%end%>
-          </ul>
-        </div>
+          <div class="btn-group btn-group-inline">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Invita
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <% @series_hash.each do |series| %>
+                <% unless invited?(user,series[0])%>
+                  <li> 
+                    <%= link_to series[1], series_requests_path(series_id: series[0], receiver_id: user.id), method: :post %> 
+                  </li>
+                <%end %>
+              <%end%>
+            </ul>
+          </div>
+        </div> 
+
       <% end %>
     </li>
   <%end%>
@@ -50,7 +52,6 @@
     <li class="list-group-item"> <%= role.user.username %> </li>
   <%end%>
 </ul>
-
 <hr>
 
 

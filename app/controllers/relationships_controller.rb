@@ -1,7 +1,9 @@
 class RelationshipsController < ApplicationController
+  before_action :set_series, only: [:new]
+  before_action :set_relationship, only: %i[show edit update]
+
   def new
     @relationship = Relationship.new
-    @series = Series.find_by(id: params[:series_id])
     @character = Character.find_by(id: params[:character_id])
     @characters = related_characters(@character)
   end
@@ -17,7 +19,6 @@ class RelationshipsController < ApplicationController
   end
 
   def update
-    @relationship = Relationship.find_by(id: params[:id])
     @relationship.assign_attributes(relationship_params)
     if @relationship.save
       flash.notice = '¡Relación Actualizada!'
@@ -28,13 +29,11 @@ class RelationshipsController < ApplicationController
   end
 
   def show
-    @relationship = Relationship.find_by(id: params[:id])
     @character = @relationship.character
     @related = @relationship.related
   end
 
   def edit
-    @relationship = Relationship.find_by(id: params[:id])
     @character = @relationship.character
     @related = @relationship.related
   end
@@ -48,8 +47,19 @@ class RelationshipsController < ApplicationController
   end
 
   def related_characters(current_character)
-    characters = @series.characters.reject{|character| character == current_character}
+    characters = @series.characters.reject do |character|
+      character == current_character
+    end
     characters -= current_character.relationships.map(&:related)
     characters -= current_character.inverse_relationships.map(&:character)
+    characters
+  end
+
+  def set_series
+    @series = Series.find_by(id: params[:series_id])
+  end
+
+  def set_relationship
+    @relationship = Relationship.find_by(id: params[:id])
   end
 end

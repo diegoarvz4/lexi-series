@@ -1,7 +1,7 @@
 <% if  @series_request && @series_request.errors.any? %>
-    <div>
-      <% @series_request.errors.full_messages.each do |error|%>
-        <div class="alert alert-danger"> <%= error %> </div>
-      <% end %>
-    </div>
-  <% end %>
+  <div>
+    <% @series_request.errors.full_messages.each do |error| %>
+      <div class="alert alert-danger"> <%= error %> </div>
+    <% end %>
+  </div>
+ <% end %>

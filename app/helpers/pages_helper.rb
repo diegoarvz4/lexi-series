@@ -1,5 +1,4 @@
 module PagesHelper
-
   def series_invitation(series_id)
     Series.find_by(id: series_id)
   end

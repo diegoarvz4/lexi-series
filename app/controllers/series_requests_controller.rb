@@ -7,11 +7,12 @@ class SeriesRequestsController < ApplicationController
                                        series_id: series.id,
                                        confirmed: false)
     if series_request.save
-      flash.notice = "¡Invitación exitosa a serie #{series.name} a #{receiver.username} !"
-      redirect_to users_path
+      flash.notice = "¡Invitación exitosa a serie
+                     #{series.name} a #{receiver.username}!"
     else
-      render 'error'
+      flash.alert = '¡El usuario ya ha sido invitado!'
     end
+    redirect_to users_path
   end
 
   def edit
@@ -25,15 +26,14 @@ class SeriesRequestsController < ApplicationController
       current_user.series << series
       flash.notice = "¡Bienvenida(o) a #{series.name}!"
       redirect_to users_path
-    else 
+    else
       render 'error'
     end
   end
 
-  private 
+  private
 
   def request_params
     params.permit(:receiver_id, :series_id)
   end
-
 end
