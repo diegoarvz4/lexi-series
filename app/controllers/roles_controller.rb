@@ -1,15 +1,14 @@
 class RolesController < ApplicationController
-
   before_action :require_admin, only: [:create]
 
   def create
     @role = Role.new(user_id: params[:user_id], category: params[:category])
     if @role.save
       flash.notice = '¡Nuevo rol asignado!'
-      redirect_to users_path
-    else 
-      render 'error'
+    else
+      flash.alert = '¡Rol ya asignado!'
     end
+    redirect_to users_path
   end
 
   private

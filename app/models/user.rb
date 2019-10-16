@@ -12,5 +12,4 @@ class User < ApplicationRecord
   has_and_belongs_to_many :series
   mount_uploader :avatar, PictureUploader
   has_many :roles
-
 end

@@ -25,7 +25,26 @@
 
 .users-admin-role{
   display: flex;
+  align-items: center;
   div{
     margin-left: 10px;
+  }
+
+  &-work{
+    border: 1px solid mediumspringgreen;
+    border-radius: 5px;
+    padding: 4px;
+    color: black;
+    font-size: 10px;
+    background-color: mediumspringgreen; 
+  }
+
+  &-customer{
+    border: 1px solid yellow;
+    border-radius: 5px;
+    padding: 4px;
+    color: black;
+    font-size: 10px;
+    background-color: yellow; 
   }
 }

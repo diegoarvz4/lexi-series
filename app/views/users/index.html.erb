@@ -7,7 +7,22 @@
     <li class="list-group-item users-list-group-item">
       <%= link_to user.username, user %>
       <% if current_user.admin? %>
+        
+
         <div class="users-admin-role">  
+
+          <% if user.roles.any?{|role| role.category == 'WORK'} %>
+            <div class="users-admin-role-work">
+              TRABAJADOR
+            </div>
+          <% end %>
+
+          <% if user.roles.any?{|role| role.category == 'CUSTOMER'} %>
+            <div class="users-admin-role-customer">
+              CLIENTE
+            </div>
+          <% end %>
+
           <div class="btn-group btn-group-inline">
             <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">Role +
               <span class="caret"></span>
@@ -44,23 +59,3 @@
 </ul>
 
 <hr>
-
-<h1>Empresas</h1>
-<hr>
-<ul class="list-group">
-  <% @customers_roles.each do |role| %>
-    <li class="list-group-item"> <%= role.user.username %> </li>
-  <%end%>
-</ul>
-<hr>
-
-
-<h1>Traductores</h1>
-<hr>
-<% if @workers_roles %>
-  <ul class="list-group">
-    <% @workers_roles.each do |role| %>
-      <li class="list-group-item"> <%= role.user.username %> </li>
-    <%end%>
-  </ul>
-<% end %>
