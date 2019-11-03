@@ -6,7 +6,11 @@
   <div class="col-sm-6">
     <%= image_tag(@user.avatar.url, class:'img-responsive thumbnail') if @user.avatar? %>
   </div>
-  <hr>
-  <h2><%= @user.email %></h2>
-  <h2>Number of series: <%= current_user.series.count %></h2>
+  <div class="col-sm-6">
+    <h5><%= @user.email %></h5>
+    <h5>Number of series: <%= current_user.series.count %></h5>
+  </div>
+  <div class="col-sm-12">
+    <h1>Mis traducciones</h1>
+  </div>
 </div>

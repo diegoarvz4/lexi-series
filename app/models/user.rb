@@ -12,4 +12,10 @@ class User < ApplicationRecord
   has_and_belongs_to_many :series
   mount_uploader :avatar, PictureUploader
   has_many :roles
+  has_many :translations,
+           foreign_key: 'translator_id',
+           class_name: 'Translation'
+  has_many :quality_controls,
+           foreign_key: 'reviewer_id',
+           class_name: 'QualityControl'
 end

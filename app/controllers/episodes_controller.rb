@@ -30,12 +30,14 @@ class EpisodesController < ApplicationController
   end
 
   def edit
-    @episode = Episode.find_by(id:params[:id])
+    @episode = Episode.find_by(id: params[:id])
   end
 
   def show
     @episode = Episode.find_by(id: params[:id])
     @series = @episode.series
+    @translation = @episode.translation
+    @qc = @translation.quality_control
   end
 
   def index

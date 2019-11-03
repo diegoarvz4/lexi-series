@@ -1,0 +1,47 @@
+<div class='form-container'>
+  <h1><%= @translation.episode.series.name %></h1>
+  <h2>Episodio #<%= @translation.episode.number %></h2>
+  <h2>Traducido por <%= link_to @translation.translator.username, @translation.translator.username %></h2>
+  <%= form_for(@qc) do |f| %>
+  <% if  @qc && @qc.errors.any? %>
+    <div>
+      <% @qc.errors.full_messages.each do |error|%>
+        <hr>
+        <div class="alert alert-danger"> <%= error %> </div>
+        <hr>
+      <% end %>
+    </div>
+  <% end %>
+    <div class="field">
+      <%= f.hidden_field :translation_id, :value => @translation.id %>
+
+      <div class="form-group">
+        <%= f.label :reviewer, "Revisor" %>
+        <%= f.select :reviewer_id, reviewer_options, include_blank: true %>
+      </div>
+
+
+      <div class="form-group">
+        <%= f.label :loops, "Loops Totales" %>
+        <%= f.number_field :loops, class: 'form-control'%>
+      </div>
+
+
+      <div class="form-group">
+        <%= f.label :max_score, "Puntaje Máximo" %>
+        <%= f.number_field :max_score, class: 'form-control'%>
+      </div>
+
+
+      <div class="form-group">
+        <%= f.label :reduced_score, "Deducciones Totales" %>
+        <%= f.number_field :reduced_score, class: 'form-control'%>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :feedback, "Retroalimentación" %>
+        <%= f.text_area :feedback, class: 'form-control'%>
+      </div>
+    <%= f.submit "Subir QC", class: 'btn btn-default form-button'%>
+  <%end%>
+</div>

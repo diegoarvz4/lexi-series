@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  feedback: MyString
+  effectivenes: 1
+  final_score: 1
+  loops: 1
+  max_score: 1
+  reduced_score: 1
+
+two:
+  feedback: MyString
+  effectivenes: 1
+  final_score: 1
+  loops: 1
+  max_score: 1
+  reduced_score: 1

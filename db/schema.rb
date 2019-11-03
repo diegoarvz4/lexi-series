@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_23_192653) do
+ActiveRecord::Schema.define(version: 2019_11_03_065055) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,22 @@ ActiveRecord::Schema.define(version: 2019_09_23_192653) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["series_id"], name: "index_episodes_on_series_id"
+  end
+
+  create_table "quality_controls", force: :cascade do |t|
+    t.string "feedback"
+    t.integer "reviewer_id"
+    t.integer "effectiveness"
+    t.integer "final_score"
+    t.integer "loops"
+    t.integer "max_score"
+    t.integer "reduced_score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "translation_id"
+    t.string "grade"
+    t.index ["reviewer_id"], name: "index_quality_controls_on_reviewer_id"
+    t.index ["translation_id"], name: "index_quality_controls_on_translation_id"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -82,6 +98,17 @@ ActiveRecord::Schema.define(version: 2019_09_23_192653) do
     t.index ["user_id", "series_id"], name: "index_series_users_on_user_id_and_series_id"
   end
 
+  create_table "translations", force: :cascade do |t|
+    t.bigint "episode_id"
+    t.integer "translator_id"
+    t.string "status", default: "in progress"
+    t.datetime "duedate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["episode_id"], name: "index_translations_on_episode_id"
+    t.index ["translator_id"], name: "index_translations_on_translator_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -99,10 +126,14 @@ ActiveRecord::Schema.define(version: 2019_09_23_192653) do
 
   add_foreign_key "characters", "series"
   add_foreign_key "episodes", "series"
+  add_foreign_key "quality_controls", "translations"
+  add_foreign_key "quality_controls", "users", column: "reviewer_id"
   add_foreign_key "relationships", "characters"
   add_foreign_key "relationships", "characters", column: "related_id"
   add_foreign_key "roles", "users"
   add_foreign_key "series_requests", "series"
   add_foreign_key "series_requests", "users", column: "receiver_id"
   add_foreign_key "series_requests", "users", column: "requester_id"
+  add_foreign_key "translations", "episodes"
+  add_foreign_key "translations", "users", column: "translator_id"
 end

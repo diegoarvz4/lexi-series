@@ -1,0 +1,28 @@
+<div class='form-container'>
+  <h1><%= @series.name %></h1>
+  <h1>Episode <%= @episode.number %></h1>
+  <%= form_for(@translation) do |f| %>
+  <% if  @translation && @translation.errors.any? %>
+    <div>
+      <% @translation.errors.full_messages.each do |error|%>
+        <hr>
+        <div class="alert alert-danger"> <%= error %> </div>
+        <hr>
+      <% end %>
+    </div>
+  <% end %>
+    <div class="field">
+      <%= f.hidden_field :episode_id, :value => @episode.id %>
+
+      <div class="form-group">
+        <%= f.label :translator, "Traductor" %>
+        <%= f.select :translator_id, workers_options, include_blank: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :duedate, "Fecha" %>
+        <%= f.date_field :duedate, class: 'form-control'%>
+      </div>
+    <%= f.submit "Asignar Traducción", class: 'btn btn-default form-button'%>
+  <%end%>
+</div>

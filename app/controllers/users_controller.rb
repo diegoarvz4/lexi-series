@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @workers_roles = roles('WORK')
   end
 
-  def show 
+  def show
     @user = User.find_by(id: params[:id])
   end
 
