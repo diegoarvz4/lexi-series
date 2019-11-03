@@ -37,7 +37,9 @@ class EpisodesController < ApplicationController
     @episode = Episode.find_by(id: params[:id])
     @series = @episode.series
     @translation = @episode.translation
-    @qc = @translation.quality_control
+    if @translation
+      @qc = @translation.quality_control
+    end
   end
 
   def index

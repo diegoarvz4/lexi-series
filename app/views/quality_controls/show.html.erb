@@ -1,10 +1,42 @@
-<ul>
-  <li>Loops Totales <%= @qc.loops %></li>
-  <li>Puntos Máximos <%= @qc.max_score %></li>
-  <li>Puntos Reducidos <%= @qc.reduced_score %></li>
-  <li>Puntaje Final <%= @qc.final_score %></li>
-  <li>Efectividad <%= @qc.effectiveness %>%</li>
-  <li>Calificación <%= @qc.grade %></li>
-  <li>Retroalimentación <%= @qc.feedback %></li>
-  <li>Revisor <%= @qc.reviewer.username %></li>
-</ul>
+<div class="container">
+  <h1>Reporte de QC</h1>
+  <h2>Traducido por <%= @qc.translation.translator.username %></h2>
+  <table class="table">
+    <tbody>
+      <tr>
+        <th scope="row">Loops Totales</th>
+        <td><%= @qc.loops %></td>
+      </tr>
+      <tr>
+        <th scope="row">Puntos Máximos</th>
+        <td><%= @qc.max_score %></td>
+      </tr>
+      <tr>
+        <th scope="row">Puntos Reducidos </th>
+        <td><%= @qc.reduced_score %></td>
+      </tr>
+      <tr>
+        <th scope="row">Puntaje Final </th>
+        <td><%= @qc.final_score %></td>
+      </tr>
+      <tr>
+        <th scope="row">Efectividad </th>
+        <td><%= @qc.effectiveness %>%</td>
+      </tr>
+      <tr>
+        <th scope="row">Calificación </th>
+        <td><%= @qc.grade %></td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    <h1>Observaciones</h1>
+    <p>
+      <%= @qc.feedback %>
+    </p>
+  </div>
+  <span>Revisado por <%= @qc.reviewer.username %> </span>
+  <span>(Updated <%= time_ago_in_words(@qc.updated_at)%> ago)</span>
+</div>
+
+<%= javascript_include_tag "test" %>

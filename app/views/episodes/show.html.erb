@@ -13,7 +13,7 @@
 <% if current_user.admin? %>
   <div class="episode-translation">
     <% if @translation %>
-      <span>Traducido por <%= link_to @translation.translator.username, @translation.translator %></span>
+      <span><%= link_to 'Traducción', @translation%> por <%= link_to @translation.translator.username, @translation.translator %></span>
       <span>(<%= @translation.status %>)</span>
       <% if @qc %>
         <span> <%= link_to 'QC', @qc %> por <%= link_to @qc.reviewer.username, @qc.reviewer.username %> </span>
@@ -28,6 +28,7 @@
 <hr>
 
 <div class="episodes-resume">
-  <h6 >Resumen</h6>
+  <h6>Resumen</h6>
   <p><%= @episode.resume%></p>
+  <span>updated <%= time_ago_in_words(@episode.updated_at) %> ago </span>
 </div>

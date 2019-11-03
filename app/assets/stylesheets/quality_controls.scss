@@ -1,3 +1,17 @@
 // Place all the styles related to the QualityControls controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+svg{
+  background-color: #2962FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  position: relative;
+}
+
+.progress-ring__circle {
+  transition: stroke-dashoffset 0.35s;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%,
+}

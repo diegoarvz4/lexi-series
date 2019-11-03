@@ -13,10 +13,9 @@ class TranslationsController < ApplicationController
     if @episode.save
       flash.notice = 'Traducción Asignada'
       redirect_to request.referrer
-    else 
+    else
       render 'new'
     end
-
   end
 
   def update
@@ -26,6 +25,8 @@ class TranslationsController < ApplicationController
   end
 
   def show
+    @translation = Translation.find_by(id: params[:id])
+    @qc = @translation.quality_control
   end
 
   def index

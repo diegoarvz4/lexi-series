@@ -21,7 +21,41 @@
     <div><%= link_to "#{image_tag('add.svg', class:'series-show-add')}".html_safe, new_episode_path(series: @series.id) %></div>
     <ul class="ist-group">
       <% @series.episodes.each do |episode|%>
-        <li class="list-group-item"><%= link_to "Ep#{episode.number}", episode %></li>
+        <li class="list-group-item"><%= link_to "Ep#{episode.number}", episode %> 
+          <% if episode.translation%>
+            <span><%= link_to 'TRA', episode.translation %></span>
+              <% if episode.translation. quality_control%>
+                <span><%= link_to 'QC', episode.translation.quality_control %></span>
+              <% end%>
+          <% end%>
+          <% unless episode.translation %>
+            <div class="btn-group btn-group-inline">
+              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Agregar
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <% unless episode.translation %>
+                  <li> 
+                    <%= link_to '+ TRA', new_translation_path(series: @series.id, episode: episode.id) %> 
+                  </li>
+                <%end %>
+              </ul>
+            </div>
+          <% else %>
+            <% unless episode.translation.quality_control %>
+              <div class="btn-group btn-group-inline">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Agregar
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li> 
+                    <%= link_to '+ QC', new_quality_control_path(id: episode.translation.id) %> 
+                  </li>
+                </ul>
+              </div>
+            <%end %>
+          <% end %>
+        </li>
       <%end%>
     </ul>
   </div>

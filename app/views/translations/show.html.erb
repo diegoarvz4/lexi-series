@@ -1,2 +1,15 @@
-<h1>Translations#show</h1>
-<p>Find me in app/views/translations/show.html.erb</p>
+<h1>Traducción por <%= link_to @translation.translator.username, @translation.translator %></h1>
+<h3><%= @translation.episode.series.name %></h3>
+<h3>Episodio <%= @translation.episode.number %></h3>
+<div><%= @translation.status %></div>
+<h3>Due date in <%= "#{time_ago_in_words(@translation.duedate)} - #{@translation.duedate.strftime('%a %d %b %Y')}" %> </h3>
+<hr>
+<h1>Quality Control</h1>
+<% if @qc %>
+  <span> <%= link_to 'Ver QC', @qc %> realizado por <%= link_to @qc.reviewer.username, @qc.reviewer.username %> </span>
+<% else %>
+  <span><%= link_to 'Agregar QC', new_quality_control_path(id: @translation.id)%></span>
+<% end %>
+<div>
+  <span><%= link_to 'Atrás', request.referrer%><span>
+</div>
