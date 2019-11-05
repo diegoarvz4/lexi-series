@@ -39,6 +39,15 @@
       <span>You don't have any series for now</span>
     <% end %>
     <hr>
-    <h3>Últimas actualizaciones (resúmenes y relaciones)</h3>
+    <h2>Traducciones</h2>
+    <% unless current_user.translations.empty? %>
+      <ul class="list-group">
+      <% current_user.translations.select{|tra| tra.status == 'in progress' }.each do |tra| %>
+        <li class="list-group-item"> <%= link_to "Episodio #{tra.episode.number} de #{tra.episode.series.name}", tra %> <span> (<%= tra.status %> </span>) </li>
+      <% end %>
+      </ul>
+    <% else %>
+      <span>No tienes traducciones pendientes</span>
+    <% end %>
   </div>
 </div>

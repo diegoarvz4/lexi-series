@@ -16,65 +16,67 @@
 <hr>
 
 <div class="row">
-  <div class="col-sm-6 series-show">
+  <div class="col-md-6 col-sm-12 series-show">
     <h1>Episodes</h1>
-    <div><%= link_to "#{image_tag('add.svg', class:'series-show-add')}".html_safe, new_episode_path(series: @series.id) %></div>
+    <div class="aux__add"><span><%= link_to "+", new_episode_path(series: @series.id) %></span></div>
     <ul class="ist-group">
       <% @series.episodes.each do |episode|%>
-        <li class="list-group-item"><%= link_to "Ep#{episode.number}", episode %> 
-          <% if episode.translation%>
-            <span><%= link_to 'TRA', episode.translation %></span>
-              <% if episode.translation. quality_control%>
-                <span><%= link_to 'QC', episode.translation.quality_control %></span>
+        <li class="list-group-item series-show-episode"><%= link_to "Ep#{episode.number}", episode %> 
+            <div>
+              <% if episode.translation%>
+                <span class="series-show-episode__job"><%= link_to 'TRA', episode.translation %></span>
+                  <% if episode.translation. quality_control%>
+                    <span class="series-show-episode__job"><%= link_to 'QC', episode.translation.quality_control %></span>
+                  <% end%>
               <% end%>
-          <% end%>
-          <% unless episode.translation %>
-            <div class="btn-group btn-group-inline">
-              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Agregar
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu">
-                <% unless episode.translation %>
-                  <li> 
-                    <%= link_to '+ TRA', new_translation_path(series: @series.id, episode: episode.id) %> 
-                  </li>
+              <% unless episode.translation %>
+                <div class="btn-group btn-group-inline">
+                  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Agregar
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <% unless episode.translation %>
+                      <li> 
+                        <%= link_to '+ TRA', new_translation_path(series: @series.id, episode: episode.id) %> 
+                      </li>
+                    <%end %>
+                  </ul>
+                </div>
+              <% else %>
+                <% unless episode.translation.quality_control %>
+                  <div class="btn-group btn-group-inline">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Agregar
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li> 
+                        <%= link_to '+ QC', new_quality_control_path(id: episode.translation.id) %> 
+                      </li>
+                    </ul>
+                  </div>
                 <%end %>
-              </ul>
+              <% end %>
             </div>
-          <% else %>
-            <% unless episode.translation.quality_control %>
-              <div class="btn-group btn-group-inline">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Agregar
-                  <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                  <li> 
-                    <%= link_to '+ QC', new_quality_control_path(id: episode.translation.id) %> 
-                  </li>
-                </ul>
-              </div>
-            <%end %>
-          <% end %>
         </li>
       <%end%>
     </ul>
   </div>
-</div>
 
-<hr>
-
-<div class="row">
-  <div class="col-sm-6 series-show">
+  <div class="col-md-6 col-sm-12 series-show">
     <h1>Characters</h1>
-    <div><%= link_to "#{image_tag('add.svg', class:'series-show-add')}".html_safe, new_character_path(series: @series.id) %></div>
+    <div class="aux__add"><span><%= link_to "+".html_safe, new_character_path(series: @series.id) %></span></div>
     <ul class="ist-group">
-      <% @characters.each do |character|%>
-        <li class="list-group-item series-show-character">
-          <%= image_tag character.picture.url if character.picture? %>
-          <span><%= link_to "#{character.name}", character %></span>
-        </li>
-      <%end%>
+      <% unless @characters.empty? %>
+        <% @characters.each do |character|%>
+          <li class="list-group-item series-show-character">
+            <%= image_tag character.picture.url if character.picture? %>
+            <span><%= link_to "#{character.name}", character %></span>
+          </li>
+        <%end%>
+      <% else %>
+        <li class="list-group-item">No hay personajes aún</li>
+      <% end %>
     </ul>
   </div>
-</div>
 
+</div>

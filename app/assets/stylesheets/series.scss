@@ -46,6 +46,19 @@
   }
 
  &-show{
+
+  &-episode{
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    &__job{
+      padding: 4px 12px;
+      border: 1px solid rgb(212, 212, 212);
+      border-radius: 10px;
+      margin-right: 5px;
+    }
+  }
+
    &-edit{
      margin-bottom: 40px;
    }
@@ -83,6 +96,7 @@
   
   img{
    max-height: 50vh;
+   width: 100%;
   }
  }
 

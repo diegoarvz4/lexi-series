@@ -8,11 +8,11 @@ class TranslationsController < ApplicationController
 
   def create
     @episode = Episode.find_by(id: params[:translation][:episode_id])
-    @episode.build_translation(translator_id: params[:translation][:translator_id],
+    @translation = @episode.build_translation(translator_id: params[:translation][:translator_id],
                                duedate: params[:translation][:duedate])
-    if @episode.save
+    if @translation.save
       flash.notice = 'Traducción Asignada'
-      redirect_to request.referrer
+      redirect_to @translation
     else
       render 'new'
     end

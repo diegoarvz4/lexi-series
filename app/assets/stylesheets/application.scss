@@ -61,3 +61,26 @@
   width: 100%;
 }
 
+.aux{
+  &__add{
+    span{
+      font-size: 20px;
+      width: 30px;
+      height: 30px;
+      padding: 3px;
+    }
+    
+  }
+}
+
+
+/* footer {
+  background-color: rgba(231, 228, 228, 0.76);
+  color: white;
+  text-align: center;
+  position: relative;
+  padding: 30px;
+  bottom: 0;
+  width: 100%;
+  margin-top: 160px;
+}*/

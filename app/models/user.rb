@@ -18,4 +18,5 @@ class User < ApplicationRecord
   has_many :quality_controls,
            foreign_key: 'reviewer_id',
            class_name: 'QualityControl'
+  validates :username, uniqueness: true
 end

@@ -2,7 +2,7 @@ class QualityControlsController < ApplicationController
   def new
     @translation = Translation.find_by(id: params[:id])
     @qc = QualityControl.new
-    @reviewers = User.joins(:roles).where('roles.category = ?', 'WORK')
+    @reviewers = User.joins(:roles).where('roles.category = ?', 'QC')
   end
 
   def create

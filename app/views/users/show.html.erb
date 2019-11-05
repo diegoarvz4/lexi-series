@@ -1,16 +1,41 @@
 <div class="row">
   <div class="col-sm-12">
-    <h1><%=  @user.username %></h1>
+    
   </div>
   <div>
-  <div class="col-sm-6">
-    <%= image_tag(@user.avatar.url, class:'img-responsive thumbnail') if @user.avatar? %>
+  <div class="col-sm-6 user-show-header">
+    <%= image_tag(@user.avatar.url, class:'thumbnail user-show__img') if @user.avatar? %>
+    <span><%=  @user.username %></span>
   </div>
   <div class="col-sm-6">
-    <h5><%= @user.email %></h5>
-    <h5>Number of series: <%= current_user.series.count %></h5>
-  </div>
-  <div class="col-sm-12">
-    <h1>Mis traducciones</h1>
+    <div class="user-show-bio">
+      <h2>Bio</h2> 
+      <span><%= @user.email %></span>
+      <p class="user-show-bio__description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley </p>
+      <hr>
+    </div>
+    <h2>Participación</h2> 
+    <div class="user-show-roles">
+      <% if @user.roles.any?{|role| role.category == 'TRANSLATOR'} %>
+      <span class="user-show-roles__item users-admin-role-work">
+        TRADUCTOR
+      </span>
+      <% end %>
+      <% if @user.roles.any?{|role| role.category == 'QC'} %>
+        <span class="user-show-roles__item users-admin-role-work users-admin-role-work-qc">
+          QC
+        </span>
+      <% end %>
+    </div>
+    <div class="user-show-works">
+      <span>Series: <%= @user.series.count %></span>
+      <% if @user.translations %>
+        <span>Traducciones: <%= @user.translations.count %></span>
+        <% if quality_controls?(@user)%>
+          <span>Efectividad promedio: <%= average_effectiveness(@user) %>% en Traducción</span>
+        <% end %>
+      <% end %>
+    </div>
+    
   </div>
 </div>
