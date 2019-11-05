@@ -29,21 +29,23 @@
                     <span class="series-show-episode__job"><%= link_to 'QC', episode.translation.quality_control %></span>
                   <% end%>
               <% end%>
-              <% unless episode.translation %>
-                <div class="btn-group btn-group-inline">
-                  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Agregar
-                    <span class="caret"></span>
-                  </button>
-                  <ul class="dropdown-menu">
-                    <% unless episode.translation %>
-                      <li> 
-                        <%= link_to '+ TRA', new_translation_path(series: @series.id, episode: episode.id) %> 
-                      </li>
-                    <%end %>
-                  </ul>
-                </div>
+              <% unless episode.translation%>
+                <% if current_user.admin %>
+                  <div class="btn-group btn-group-inline">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Agregar
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <% unless episode.translation %>
+                        <li> 
+                          <%= link_to '+ TRA', new_translation_path(series: @series.id, episode: episode.id) %> 
+                        </li>
+                      <%end %>
+                    </ul>
+                  </div>
+                <% end %>
               <% else %>
-                <% unless episode.translation.quality_control %>
+                <% unless episode.translation.quality_control  %>
                   <div class="btn-group btn-group-inline">
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Agregar
                       <span class="caret"></span>

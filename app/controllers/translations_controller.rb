@@ -2,7 +2,7 @@ class TranslationsController < ApplicationController
   def new
     @series = Series.find_by(id: params[:series])
     @episode = Episode.find_by(id: params[:episode])
-    @work_users = User.joins(:roles).where('roles.category = ?', 'WORK')
+    @work_users = User.joins(:roles).where('roles.category = ?', 'TRANSLATOR')
     @translation = Translation.new
   end
 
