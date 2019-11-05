@@ -6,4 +6,13 @@ module TranslationsHelper
     end
     options
   end
+
+  def lang_options
+    options = {}
+    ['ENG', 'SPA', 'FRA', 'POR' ].each do |lang|
+      options[lang] = lang
+    end
+    options
+  end
+
 end

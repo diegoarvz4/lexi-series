@@ -1,5 +1,5 @@
 <div class='form-container'>
-  <%= form_for @series, html: { multipart: true } do |f| %>
+  <%= form_for @series do |f| %>
   <% if  @series && @series.errors.any? %>
     <div>
       <% @series.errors.full_messages.each do |error|%>

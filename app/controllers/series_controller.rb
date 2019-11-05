@@ -24,12 +24,12 @@ class SeriesController < ApplicationController
   end 
 
   def update 
-    series = Series.find_by(id: params[:id])
-    series.assign_attributes(series_params)
+    @series = Series.find_by(id: params[:id])
+    @series.assign_attributes(series_params)
 
-    if series.save 
+    if @series.save 
       flash.notice = '¡Serie actualizada!'
-      redirect_to series
+      redirect_to @series
     else 
       render 'edit'
     end 

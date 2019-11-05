@@ -20,7 +20,22 @@
       </div>
 
       <div class="form-group">
-        <%= f.label :duedate, "Fecha" %>
+        <%= f.label :src_lang, "Source Lang" %>
+        <%= f.select :src_lang, lang_options, include_blank: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :dst_lang, "Destination Lang" %>
+        <%= f.select :dst_lang, lang_options, include_blank: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :runtime, "Runtime Minutes" %>
+        <%= f.number_field :runtime, class: 'form-control'%>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :duedate, "Fecha Entrega" %>
         <%= f.date_field :duedate, class: 'form-control'%>
       </div>
     <%= f.submit "Asignar Traducción", class: 'btn btn-default form-button'%>
