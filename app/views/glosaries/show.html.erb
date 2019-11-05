@@ -1,0 +1,31 @@
+<div class="container">
+  <h1>Glosario <%= @glosary.title %></h1>
+  <h2><%= link_to @glosary.series.name, @glosary.series %></h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th score="col">SRC</th>
+        <th score="col">DST</th>
+        <th score="col">Comentarios</th>
+      </tr>
+    
+    </thead>
+
+    <tbody>
+      <% @terms.each do |term| %>
+      <tr>
+        <td> <%= term.src_term %></td>
+        <td> <%= term.dst_term %></td>
+        <td> <%= term.comments %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+
+<hr>
+
+<div>
+  <span><%= link_to "Agregar Termino", new_term_path(glosary_id: @glosary.id) %> </span>
+</div>

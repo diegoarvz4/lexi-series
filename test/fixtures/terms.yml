@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  glosary: one
+  src_term: MyString
+  dst_term: MyString
+  comments: MyString
+
+two:
+  glosary: two
+  src_term: MyString
+  dst_term: MyString
+  comments: MyString

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_05_213421) do
+ActiveRecord::Schema.define(version: 2019_11_05_223640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,14 @@ ActiveRecord::Schema.define(version: 2019_11_05_213421) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["series_id"], name: "index_episodes_on_series_id"
+  end
+
+  create_table "glosaries", force: :cascade do |t|
+    t.bigint "series_id"
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["series_id"], name: "index_glosaries_on_series_id"
   end
 
   create_table "quality_controls", force: :cascade do |t|
@@ -98,6 +106,16 @@ ActiveRecord::Schema.define(version: 2019_11_05_213421) do
     t.index ["user_id", "series_id"], name: "index_series_users_on_user_id_and_series_id"
   end
 
+  create_table "terms", force: :cascade do |t|
+    t.bigint "glosary_id"
+    t.string "src_term"
+    t.string "dst_term"
+    t.string "comments"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["glosary_id"], name: "index_terms_on_glosary_id"
+  end
+
   create_table "translations", force: :cascade do |t|
     t.bigint "episode_id"
     t.integer "translator_id"
@@ -130,6 +148,7 @@ ActiveRecord::Schema.define(version: 2019_11_05_213421) do
 
   add_foreign_key "characters", "series"
   add_foreign_key "episodes", "series"
+  add_foreign_key "glosaries", "series"
   add_foreign_key "quality_controls", "translations"
   add_foreign_key "quality_controls", "users", column: "reviewer_id"
   add_foreign_key "relationships", "characters"
@@ -138,6 +157,7 @@ ActiveRecord::Schema.define(version: 2019_11_05_213421) do
   add_foreign_key "series_requests", "series"
   add_foreign_key "series_requests", "users", column: "receiver_id"
   add_foreign_key "series_requests", "users", column: "requester_id"
+  add_foreign_key "terms", "glosaries"
   add_foreign_key "translations", "episodes"
   add_foreign_key "translations", "users", column: "translator_id"
 end

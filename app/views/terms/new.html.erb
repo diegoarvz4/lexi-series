@@ -1,0 +1,29 @@
+<div class='form-container'>
+  <%= form_for(@term) do |f| %>
+  <% if  @term && @term.errors.any? %>
+    <div>
+      <% @term.errors.full_messages.each do |error|%>
+        <div class="alert alert-danger"> <%= error %> </div>
+      <% end %>
+    </div>
+  <% end %>
+    <div class="field">
+      <h1>Nuevo Termino</h1>
+      <h2><%= @glosary.title %></h2>
+      <%= f.hidden_field :glosary_id, :value => @glosary.id %>
+      <div class="form-group">
+        <%= f.label :src_term, 'SRC' %>
+        <%= f.text_field :src_term, class: 'form-control'%>
+      </div>
+      <div class="form-group">
+        <%= f.label :dst_term, 'DST' %>
+        <%= f.text_field :dst_term, class: 'form-control'%>
+      </div>
+      <div class="form-group">
+        <%= f.label :comments, 'Comentarios' %>
+        <%= f.text_field :comments, class: 'form-control'%>
+      </div>
+    </div>
+    <%= f.submit "Añadir Término", class: 'btn btn-default form-button'%>
+  <%end%>
+</div>

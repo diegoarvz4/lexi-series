@@ -14,12 +14,25 @@
 </div>
 
 <hr>
+<% if !@series.glosaries.empty? %>
+  <ul class="list-group">
+    <% @series.glosaries.each do |glosary|%>
+      <li class="list-group-item"><%= link_to glosary.title, glosary %></li>
+    <% end %>
+  </ul>
+<% else%>
+  <span>No hay glosarios</span>
+<% end %>
+<div>
+  <%= link_to "Agregar Glosario", new_glosary_path(series_id: @series) %>
+</div>
+<hr>
 
 <div class="row">
   <div class="col-md-6 col-sm-12 series-show">
     <h1>Episodes</h1>
     <div class="aux__add"><span><%= link_to "+", new_episode_path(series: @series.id) %></span></div>
-    <ul class="ist-group">
+    <ul class="list-group">
       <% @series.episodes.each do |episode|%>
         <li class="list-group-item series-show-episode"><%= link_to "Ep#{episode.number}", episode %> 
             <div>
