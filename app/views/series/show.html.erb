@@ -14,20 +14,39 @@
 </div>
 
 <hr>
-<% if !@series.glosaries.empty? %>
-  <ul class="list-group">
-    <% @series.glosaries.each do |glosary|%>
-      <li class="list-group-item"><%= link_to glosary.title, glosary %></li>
+<div class="row">
+  <div class="col-md-6 col-sm-12">
+    <h1>Glosarios</h1>
+    <% if !@series.glosaries.empty? %>
+      <ul class="list-group">
+        <% @series.glosaries.each do |glosary|%>
+          <li class="list-group-item"><%= link_to glosary.title, glosary %></li>
+        <% end %>
+      </ul>
+    <% else%>
+      <span>No hay glosarios</span>
     <% end %>
-  </ul>
-<% else%>
-  <span>No hay glosarios</span>
-<% end %>
-<div>
-  <%= link_to "Agregar Glosario", new_glosary_path(series_id: @series) %>
+    <div>
+      <%= link_to "Agregar Glosario", new_glosary_path(series_id: @series) %>
+    </div>
+  </div>
+  <div class="col-md-6 col-sm-12">
+      <h1>Instrucciones</h1>
+      <% if @series.instructions %>
+        <ul class="list-group"> 
+          <% instructions(@series.instructions).each_with_index do |inst, idx| %>
+            <li class="list-group-item"><%= "#{(idx+1)}. #{inst}" %></li>
+          <% end %>
+          
+        </ul>
+         <%= link_to "Agregar Instrucciones", edit_series_path(@series)%>
+      <% else %>
+        <div><span>No hay instrucciones</span></div>
+        <%= link_to "Agregar Instrucciones", edit_series_path(@series)%>
+      <% end %>
+  </div>
 </div>
 <hr>
-
 <div class="row">
   <div class="col-md-6 col-sm-12 series-show">
     <h1>Episodes</h1>

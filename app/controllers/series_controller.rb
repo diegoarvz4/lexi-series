@@ -25,7 +25,7 @@ class SeriesController < ApplicationController
 
   def update 
     @series = Series.find_by(id: params[:id])
-    @series.assign_attributes(series_params)
+    @series.assign_attributes(series_update_params)
 
     if @series.save 
       flash.notice = '¡Serie actualizada!'
@@ -56,6 +56,10 @@ class SeriesController < ApplicationController
 
     def series_params
       params.require(:series).permit(:name, :description, :picture)
+    end
+
+    def series_update_params
+      params.require(:series).permit(:name, :description, :picture, :instructions)
     end
 
 end
