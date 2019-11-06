@@ -18,7 +18,7 @@
 <hr>
 <h2>Quality Control</h2>
 <% if @qc %>
-  <span> <%= link_to 'Ver QC', @qc %> realizado por <%= link_to @qc.reviewer.username, @qc.reviewer.username %> </span>
+  <span> <%= link_to 'Ver QC', @qc %> realizado por <%= link_to @qc.reviewer.username, @qc.reviewer %> </span>
 <% else %>
   <% if current_user.admin? %>
     <span><%= link_to 'Agregar QC', new_quality_control_path(id: @translation.id)%></span>
