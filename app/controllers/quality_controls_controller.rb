@@ -6,6 +6,7 @@ class QualityControlsController < ApplicationController
   end
 
   def create
+    @translation = params[:quality_control][:translation_id]
     max_score = params[:quality_control][:max_score]
     reduced_score = params[:quality_control][:reduced_score]
     final_score = max_score.to_f - reduced_score.to_f
