@@ -1,2 +1,21 @@
-<h1>Glosaries#edit</h1>
-<p>Find me in app/views/glosaries/edit.html.erb</p>
+<div class='form-container'>
+  <%= form_for(@glosary) do |f| %>
+  <% if  @glosary && @glosary.errors.any? %>
+    <div>
+      <% @glosary.errors.full_messages.each do |error|%>
+        <div class="alert alert-danger"> <%= error %> </div>
+      <% end %>
+    </div>
+  <% end %>
+    <div class="field">
+      <h1>Editar Glosario <%= @glosary.title %></h1>
+      <h2><%= @glosary.series.name %></h2>
+      <%= f.hidden_field :glosary_id, :value => @glosary.id %>
+      <div class="form-group">
+        <%= f.label :title, 'Nombre' %>
+        <%= f.text_field :title, class: 'form-control'%>
+      </div>
+    </div>
+    <%= f.submit "Actualizar Glosario", class: 'btn btn-default form-button'%>
+  <%end%>
+</div>

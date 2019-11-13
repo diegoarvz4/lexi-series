@@ -1,4 +1,7 @@
 class QualityControlsController < ApplicationController
+
+  before_action :require_admin, only: [:create]
+
   def new
     @translation = Translation.find_by(id: params[:id])
     @qc = QualityControl.new
@@ -32,7 +35,7 @@ class QualityControlsController < ApplicationController
                              grade: grade)
     if @qc.save
       flash.notice = 'QC Realizado'
-      redirect_to @qc.translation.episode
+      redirect_to @qc.translation
     else
       render 'new'
     end
@@ -58,5 +61,9 @@ class QualityControlsController < ApplicationController
 
   def qc_params
     params.require(:quality_control).permit(:translation_id, :reviewer_id, :loops, :max_score, :reduced_score, :feedback)
+  end
+
+  def require_admin
+    redirect_to request.referrer unless current_user.admin
   end
 end

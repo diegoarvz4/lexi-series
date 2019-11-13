@@ -15,9 +15,19 @@ class GlosariesController < ApplicationController
   end
 
   def edit
+    @glosary = Glosary.find_by(id: params[:id])
   end
 
   def update
+    @glosary = Glosary.find_by(id: params[:glosary][:glosary_id])
+    @glosary.assign_attributes(title: params[:glosary][:title])
+
+    if @glosary.save 
+      flash.notice = "Glosario Actualizado"
+      redirect_to @glosary
+    else
+      render 'edit'
+    end
   end
 
   def destroy
@@ -26,5 +36,6 @@ class GlosariesController < ApplicationController
   def show
     @glosary = Glosary.find_by(id: params[:id])
     @terms = @glosary.terms
+    @term = Term.new
   end
 end

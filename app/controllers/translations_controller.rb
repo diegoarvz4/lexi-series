@@ -1,4 +1,7 @@
 class TranslationsController < ApplicationController
+
+  before_action :require_admin, only: [:create, :update]
+
   def new
     @series = Series.find_by(id: params[:series])
     @episode = Episode.find_by(id: params[:episode])
@@ -22,9 +25,19 @@ class TranslationsController < ApplicationController
   end
 
   def update
+    @translation = Translation.find_by(id: params[:id])
+    @translation.assign_attributes(translation_params)
+    if @translation.save
+      flash.notice = 'Traducción Actualizada'
+      redirect_to @translation
+    else
+      render 'edit'
+    end
   end
 
   def edit
+    @translation = Translation.find_by(id: params[:id])
+    @work_users = User.joins(:roles).where('roles.category = ?', 'TRANSLATOR')
   end
 
   def show
@@ -36,5 +49,15 @@ class TranslationsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def require_admin
+    redirect_to request.referrer unless current_user.admin
+  end
+
+  def translation_params
+    params.require(:translation).permit(:translation_id, :src_lang, :dst_lang, :runtime, :duedate, :status)
   end
 end

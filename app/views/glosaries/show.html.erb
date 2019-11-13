@@ -1,25 +1,30 @@
 <div class="container">
   <h1><%= @glosary.title %></h1>
-  <span> Glosario </span>
-  <h2><%= link_to @glosary.series.name, @glosary.series %></h2>
+  <span> Glosario </span> <span><%= link_to "Editar", edit_glosary_path(@glosary) %></span>
+  <hr>
+  <div class="episodes-series-container">
+    <div class="episodes-series-image">
+      <%= image_tag @glosary.series.picture.url if @glosary.series.picture? %>
+    </div>
+    <h5 class="episodes-series"><%= link_to @glosary.series.name, @glosary.series %></h5> 
+  </div>
+  <hr>
   <table class="table">
     <thead>
       <tr>
         <th score="col">SRC</th>
-        <th score="col">DST</th>
+        <th score="col">TRG</th>
         <th score="col">Comentarios</th>
+        <th></th>
+        <% if current_user.admin? %>
+          <th></th>
+        <% end %>
       </tr>
     
     </thead>
 
-    <tbody>
-      <% @terms.each do |term| %>
-      <tr>
-        <td> <%= term.src_term %></td>
-        <td> <%= term.dst_term %></td>
-        <td> <%= term.comments %></td>
-      </tr>
-      <% end %>
+    <tbody id="termsBodyContainer">
+      <%= render @terms %>
     </tbody>
   </table>
 </div>
@@ -28,5 +33,9 @@
 <hr>
 
 <div>
-  <span><%= link_to "Agregar Termino", new_term_path(glosary_id: @glosary.id) %> </span>
+  <!-- span><%= link_to "Agregar Termino", new_term_path(glosary_id: @glosary.id) %> </span -->
+  <button id="addTerm" class="btn btn-primary">Agregar término</button>
+  <div id="addTermForm"><%= render 'term_form'%></div>
 </div>
+
+<%= javascript_include_tag "glosary" %>

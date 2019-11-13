@@ -27,7 +27,9 @@
       <span>No hay glosarios</span>
     <% end %>
     <div>
-      <%= link_to "Agregar Glosario", new_glosary_path(series_id: @series) %>
+      <% if current_user.admin?%>
+        <%= link_to "Agregar Glosario", new_glosary_path(series_id: @series) %>
+      <% end %>
     </div>
   </div>
   <div class="col-md-6 col-sm-12">
@@ -39,10 +41,14 @@
           <% end %>
           
         </ul>
-         <%= link_to "Agregar Instrucciones", edit_series_path(@series)%>
+         <% if current_user.admin? %>
+          <%= link_to "Agregar Instrucciones", edit_series_path(@series)%>
+         <% end %>
       <% else %>
         <div><span>No hay instrucciones</span></div>
-        <%= link_to "Agregar Instrucciones", edit_series_path(@series)%>
+        <% if current_user.admin? %>
+          <%= link_to "Agregar Instrucciones", edit_series_path(@series)%>
+        <% end %>
       <% end %>
   </div>
 </div>
@@ -57,7 +63,7 @@
             <div>
               <% if episode.translation%>
                 <span class="series-show-episode__job"><%= link_to 'TRA', episode.translation %></span>
-                  <% if episode.translation. quality_control%>
+                  <% if episode.translation.quality_control%>
                     <span class="series-show-episode__job"><%= link_to 'QC', episode.translation.quality_control %></span>
                   <% end%>
               <% end%>
@@ -78,16 +84,18 @@
                 <% end %>
               <% else %>
                 <% unless episode.translation.quality_control  %>
-                  <div class="btn-group btn-group-inline">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Agregar
-                      <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                      <li> 
-                        <%= link_to '+ QC', new_quality_control_path(id: episode.translation.id) %> 
-                      </li>
-                    </ul>
-                  </div>
+                  <% if current_user.admin %>
+                    <div class="btn-group btn-group-inline">
+                      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Agregar
+                        <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li> 
+                          <%= link_to '+ QC', new_quality_control_path(id: episode.translation.id) %> 
+                        </li>
+                      </ul>
+                    </div>
+                  <% end %>
                 <%end %>
               <% end %>
             </div>

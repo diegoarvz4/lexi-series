@@ -1,0 +1,13 @@
+<tr>
+  <td> <%= term.src_term %></td>
+  <td> <%= term.dst_term %></td>
+  <td> <%= term.comments %></td>
+  <td> 
+    <%= link_to "Editar", edit_term_path(term), class: 'btn btn-secondary' %>
+  </td>
+  <% if current_user.admin? %>
+    <td>
+      <%= link_to "Eliminar", term, method: :delete, class: 'btn btn-secondary' %>
+    </td>
+  <% end %>
+</tr>

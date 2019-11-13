@@ -1,3 +1,112 @@
 // Place all the styles related to the Translations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.translation{
+  &-title{
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  &-specs{
+    margin-top: 10px;
+    &-langs{
+      font-weight: bold;
+      font-size: 20px;
+    }
+    &-runtime{
+      font-size: 25px;
+      font-weight: bold;
+    }
+  }
+
+  &-status{
+    display: flex;
+    &-calendarDay{
+      display: flex;
+      width: 180px;
+      flex-wrap: wrap;
+      &-month{
+        font-size: 30px;
+        background-color: #A9FBD7;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 0;
+      }
+      &-day{
+        font-size: 20px;
+        background-color: #91C7B1;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 0;
+      }
+      &-num{
+        font-size: 70px;
+        background-color: #F1F7ED;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 0;
+      }
+    }
+
+    &-progress{
+      font-size: 60px;
+      font-weight: bold;
+      margin-left: 20px;
+      &-onTime{
+        span{
+          border: 1px solid gray;
+          padding: 20px;
+          font-size: 20px;
+          border-radius: 20px;
+        }
+      }
+      &-form{
+        font-size: 10px;
+        form{
+          display: flex;
+          select, input{
+            height: 42px;
+            margin-right: 10px;
+          }
+
+        }
+        max-height: 20px;
+      }
+    }
+  }
+
+  &-qc{
+    &-title{
+      font-size: 30px;
+      font-weight: bold;
+    }
+    &-link{
+      margin-top: 20px;
+      font-size: 20px;
+    }
+  }
+}
+
+.onTime{
+  color:green;
+}
+
+.delayed{
+  color:red;
+}
+
+#editTranslationForm{
+  font-size: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+#editTranslationContainer{
+  display: flex;
+}
