@@ -6,7 +6,7 @@
   <div class="col-sm-12 col-md-2">
     <div class="row">
       <h1><%= link_to @character.name, @character %> </h1>
-      <p><%= @character.description %></p>  
+      <!-- p><%= @character.description %></p -->  
       <%= image_tag @character.picture.url, class: 'img-rounded img-responsive' if @character.picture? %>
     </div>
   </div>
