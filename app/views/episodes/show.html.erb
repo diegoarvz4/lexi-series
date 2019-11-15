@@ -32,3 +32,36 @@
   <p><%= @episode.resume%></p>
   <span>updated <%= time_ago_in_words(@episode.updated_at) %> ago </span>
 </div>
+
+<hr>
+<h1>Dubcard</h1>
+<% if @dubcard != nil%>
+  <table class="table">
+    <thead>
+        <tr>
+          <th score="col">Personaje</th>
+          <th score="col">Registered?</th>
+          <th score="col">IMG</th>
+        </tr>
+      </thead>
+    <tbody>
+      <% dubcard_characters.each do |dch| %>
+      <tr>
+        <td><%= dch %></td>
+        <td>
+          <% if character_exists?(dch) %>
+            <%= link_to dch, Character.find_by(naming: dch) %>
+          <% else%>
+            <%= 'No' %>
+          <%end%>
+        </td>
+        <td ><%= image_tag Character.find_by(naming: dch).picture.url, class:"dubcard_img" if Character.where(naming: dch).exists? %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  <% dubcard_characters.each do |character| %>
+  <% end %>
+  <%= link_to 'Editar Dubcard', edit_episode_path %>
+<% else %>
+  <%= link_to 'Agregar Dubcard', edit_episode_path %>
+<% end %>

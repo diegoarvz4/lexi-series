@@ -1,0 +1,2 @@
+module DubcardsHelper
+end

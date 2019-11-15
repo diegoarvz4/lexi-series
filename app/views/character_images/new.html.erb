@@ -1,0 +1,29 @@
+<div class='form-container'>
+  <%= form_for(@character_image) do |f| %>
+  <% if  @character_image && @character_image.errors.any? %>
+    <div>
+      <% @character_image.errors.full_messages.each do |error|%>
+        <div class="alert alert-danger"> <%= error %> </div>
+        <hr>
+      <% end %>
+    </div>
+  <% end %>
+    <div class="field">
+      <h1><%= @character.name %></h1>
+      <%= f.hidden_field :character_id, :value => @character.id %>
+
+      <div class="form-group">
+          <div class="input-group">
+            <label class="input-group-btn">
+                <span class="btn btn-primary">
+                    Browse&hellip; <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png', style: 'display: none;' %>
+                </span>
+            </label>
+            <input type="text" class="form-control" readonly>
+          </div>
+        </div>
+      </div>
+    <%= f.submit "Submit Episode", class: 'btn btn-default form-button'%>
+  <%end%>
+</div>
+<%= javascript_include_tag "img-loader" %>

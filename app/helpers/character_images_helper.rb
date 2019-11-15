@@ -1,0 +1,2 @@
+module CharacterImagesHelper
+end

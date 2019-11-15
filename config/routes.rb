@@ -23,5 +23,6 @@ Rails.application.routes.draw do
   resources :quality_controls
   resources :glosaries
   resources :terms
-
+  resources :dubcards
+  resources :character_images
 end

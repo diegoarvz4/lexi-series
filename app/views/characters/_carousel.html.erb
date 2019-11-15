@@ -1,0 +1,41 @@
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <% @character_imgs.each_with_index do |img, index| %>
+      <% if index == 0%>
+        <li data-target="#myCarousel" class="active" data-slide-to=<%="#{index}"%>></li>
+      <% else %>
+        <li data-target="#myCarousel" data-slide-to=<%="#{index}"%>></li>
+      <% end %>
+      
+    <% end %>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+
+    <% @character_imgs.each_with_index do |img, index| %>
+      <% if index == 0 %>
+        <div class="item active">
+          <%= image_tag img.picture.url, :style => "width: 100%"  if img.picture? %>
+        </div>
+      <% else %>
+        <div class="item">
+          <%= image_tag img.picture.url, :style => "width: 100%"  if img.picture? %>
+        </div>
+      <% end %>
+      
+    <% end %>
+
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>

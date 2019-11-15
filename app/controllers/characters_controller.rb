@@ -12,11 +12,12 @@ class CharactersController < ApplicationController
   def update
     @character = Character.find_by(id: params[:id])
     @character.assign_attributes(character_params)
+    @character.assign_attributes(naming: params[:character][:naming].upcase)
     if @character.save 
       flash.notice = "#{@character.name} Updated!"
       redirect_to @character
     else
-      render 'new'
+      render 'edit'
     end
   end
 
@@ -26,8 +27,8 @@ class CharactersController < ApplicationController
     if @character.save 
       redirect_to @character
     else
-      render 'new'   
-    end 
+      render 'new'
+    end
   end
 
   def delete
@@ -38,11 +39,12 @@ class CharactersController < ApplicationController
     @characters_related = @character.relationships.map{|relationship| relationship.related} # (&:related)
     @characters_related += @character.inverse_relationships.map{|relationship| relationship.character}
     @characters_related.sort_by{ |character| character.name}
+    @character_imgs = @character.character_images
   end
 
   private 
 
     def character_params
-      params.require(:character).permit(:name, :description, :picture)
+      params.require(:character).permit(:name, :description, :picture, :naming)
     end 
 end

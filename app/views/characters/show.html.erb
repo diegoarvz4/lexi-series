@@ -11,10 +11,15 @@
 <div class="row">
   <div class="col-sm-6 series-show">
     <h1><%= @character.name %> </h1>
+    <hr>
+    <h5>[<%= @character.naming %>]</h5>
+    <hr>
     <span class="series-container-title series-show-edit">
       <%= link_to "#{image_tag('edit.svg', class:'picture img-responsive')}".html_safe, edit_character_path(@character) %>
     </span>
     <p><%= @character.description %></p>
+    <span>Apariciones: </span>
+    <hr>
   </div>
   <div class="col-sm-6 series-show-picture">
     <%= image_tag @character.picture.url, class: 'img-rounded' if @character.picture? %>
@@ -22,6 +27,8 @@
 </div>
 
 <hr>
+
+
 
 <div class="row">
   <div class="col-sm-6 series-show">
@@ -44,4 +51,17 @@
       <%end%>
     </ul>
   </div>
+  <div class="col-sm-6">
+    <h1>Catch Phrases</h1>
+  </div>
 </div>
+
+<hr>
+
+<div class="characters-carousel">
+  <h4>Más imágenes</h4>
+  <%= render 'carousel' if @character_imgs.length > 0 %>
+  <span><%= link_to 'Agregar Foto', new_character_image_path(character_id: @character.id) %></span>
+</div>
+
+<hr>

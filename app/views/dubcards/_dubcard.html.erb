@@ -1,0 +1,11 @@
+<div>
+  <% if @dubcard != nil %>
+    <ul>
+      <% @dubcard.each do |character|%>
+        <li><%= character.name %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <span><%= link_to 'Crear Dubcard', new_dubcard_path %></span>
+  <% end %>
+<div>

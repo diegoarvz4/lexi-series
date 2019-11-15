@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_06_155343) do
+ActiveRecord::Schema.define(version: 2019_11_15_061932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "character_images", force: :cascade do |t|
+    t.bigint "character_id"
+    t.string "picture"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["character_id"], name: "index_character_images_on_character_id"
+  end
 
   create_table "characters", force: :cascade do |t|
     t.string "picture"
@@ -23,7 +31,17 @@ ActiveRecord::Schema.define(version: 2019_11_06_155343) do
     t.bigint "series_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "dubcard_id"
+    t.string "naming"
+    t.index ["dubcard_id"], name: "index_characters_on_dubcard_id"
     t.index ["series_id"], name: "index_characters_on_series_id"
+  end
+
+  create_table "dubcards", force: :cascade do |t|
+    t.bigint "episode_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["episode_id"], name: "index_dubcards_on_episode_id"
   end
 
   create_table "episodes", force: :cascade do |t|
@@ -32,6 +50,7 @@ ActiveRecord::Schema.define(version: 2019_11_06_155343) do
     t.bigint "series_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "dubcard_characters"
     t.index ["series_id"], name: "index_episodes_on_series_id"
   end
 
@@ -147,7 +166,10 @@ ActiveRecord::Schema.define(version: 2019_11_06_155343) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "character_images", "characters"
+  add_foreign_key "characters", "dubcards"
   add_foreign_key "characters", "series"
+  add_foreign_key "dubcards", "episodes"
   add_foreign_key "episodes", "series"
   add_foreign_key "glosaries", "series"
   add_foreign_key "quality_controls", "translations"

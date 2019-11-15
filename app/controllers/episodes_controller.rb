@@ -18,6 +18,7 @@ class EpisodesController < ApplicationController
   def update
     @episode = Episode.find_by(id: params[:id])
     @episode.assign_attributes(episode_params)
+    @episode.assign_attributes(dubcard_characters: clean_characters)
     if @episode.save 
       flash.notice = "Episode #{@episode.number} Updated!"
       redirect_to @episode
@@ -40,6 +41,7 @@ class EpisodesController < ApplicationController
     if @translation
       @qc = @translation.quality_control
     end
+    @dubcard = @episode.dubcard_characters
   end
 
   def index
@@ -49,6 +51,15 @@ class EpisodesController < ApplicationController
   private 
 
   def episode_params
-    params.require(:episode).permit(:number, :resume)
-  end 
+    params.require(:episode).permit(:number, :resume, :dubcard_characters)
+  end
+
+  def clean_characters
+    dubcard_chars = params[:episode][:dubcard_characters]
+    dubcard_chars.split(/\s\s+/)
+    .uniq
+    .reject{|ch| ch.downcase == 'personaje' || ch.downcase == 'inserto'}
+    .sort
+    .join(',')
+  end
 end
