@@ -9,7 +9,7 @@
     </div>
   <% end %>
     <div class="field">
-      <h1><%= @character.name %></h1>
+      <h1>Nueva foto para <%= @character.name %></h1>
       <%= f.hidden_field :character_id, :value => @character.id %>
 
       <div class="form-group">
@@ -23,7 +23,7 @@
           </div>
         </div>
       </div>
-    <%= f.submit "Submit Episode", class: 'btn btn-default form-button'%>
+    <%= f.submit "Añadir Foto", class: 'btn btn-default form-button'%>
   <%end%>
 </div>
 <%= javascript_include_tag "img-loader" %>

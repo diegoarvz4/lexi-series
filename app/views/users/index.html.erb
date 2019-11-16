@@ -64,7 +64,13 @@
               <%end%>
             </ul>
           </div>
-        </div> 
+
+          <div>
+            <span><%= link_to 'Eliminar', admin_destroy_user_path(user), method: :delete, data: { confirm: "¿Estás seguro?" } %><span>
+          </div> 
+        </div>
+
+        
 
       <% end %>
     </li>

@@ -36,6 +36,10 @@ class SeriesController < ApplicationController
   end 
 
   def destroy 
+    @series = Series.find_by(id: params[:id])
+    @series.destroy
+    flash.notice = 'Serie eliminada'
+    redirect_to series_index_path
   end  
 
   def create 

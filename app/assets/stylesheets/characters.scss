@@ -3,6 +3,21 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .characters{
+
+  &-main-img{
+    width: 100%;
+    padding: 10px;
+    height: 500px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img{
+      width: 80%;
+      margin: 0 auto;
+    }
+  }
+
   &-add{
     margin: 20px 0;
   }
@@ -25,15 +40,19 @@
     width: 100%;
   }
 
+  &-dubname{
+    font-weight: bold;
+  }
+
 }
 
 .carousel{
-  width: 620px;
+  /*width: 620px;
   margin: 0 auto;
-  height: 600px;
+  height: 600px;*/
 }
 
 .carousel-inner{
-  width: 620px;
-  height: 600px;
+  /*width: 620px;
+  height: 600px;*/
 }

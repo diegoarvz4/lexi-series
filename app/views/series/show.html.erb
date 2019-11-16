@@ -62,6 +62,9 @@
         <li class="list-group-item series-show-episode"><%= link_to "Ep#{episode.number}", episode %> 
             <div>
               <% if episode.translation%>
+                  <% if episode.dubcard_characters %>
+                    <span class="series-show-episode__job"><%= link_to 'DUBCARD', episode %></span>
+                  <% end %>
                 <span class="series-show-episode__job"><%= link_to 'TRA', episode.translation %></span>
                   <% if episode.translation.quality_control%>
                     <span class="series-show-episode__job"><%= link_to 'QC', episode.translation.quality_control %></span>

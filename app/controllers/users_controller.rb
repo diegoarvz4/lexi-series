@@ -13,6 +13,13 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash.notice = "Usuario eliminado"
+    redirect_to users_path
+  end
+
   private
 
   def require_admin

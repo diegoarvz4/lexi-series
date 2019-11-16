@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_15_061932) do
+ActiveRecord::Schema.define(version: 2019_11_16_035713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2019_11_15_061932) do
     t.datetime "updated_at", null: false
     t.bigint "dubcard_id"
     t.string "naming"
+    t.string "catch_phrases"
     t.index ["dubcard_id"], name: "index_characters_on_dubcard_id"
     t.index ["series_id"], name: "index_characters_on_series_id"
   end
@@ -166,21 +167,21 @@ ActiveRecord::Schema.define(version: 2019_11_15_061932) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "character_images", "characters"
+  add_foreign_key "character_images", "characters", on_delete: :cascade
   add_foreign_key "characters", "dubcards"
-  add_foreign_key "characters", "series"
-  add_foreign_key "dubcards", "episodes"
-  add_foreign_key "episodes", "series"
-  add_foreign_key "glosaries", "series"
-  add_foreign_key "quality_controls", "translations"
+  add_foreign_key "characters", "series", on_delete: :cascade
+  add_foreign_key "dubcards", "episodes", on_delete: :cascade
+  add_foreign_key "episodes", "series", on_delete: :cascade
+  add_foreign_key "glosaries", "series", on_delete: :cascade
+  add_foreign_key "quality_controls", "translations", on_delete: :cascade
   add_foreign_key "quality_controls", "users", column: "reviewer_id"
-  add_foreign_key "relationships", "characters"
   add_foreign_key "relationships", "characters", column: "related_id"
+  add_foreign_key "relationships", "characters", on_delete: :cascade
   add_foreign_key "roles", "users"
-  add_foreign_key "series_requests", "series"
+  add_foreign_key "series_requests", "series", on_delete: :cascade
   add_foreign_key "series_requests", "users", column: "receiver_id"
   add_foreign_key "series_requests", "users", column: "requester_id"
-  add_foreign_key "terms", "glosaries"
-  add_foreign_key "translations", "episodes"
-  add_foreign_key "translations", "users", column: "translator_id"
+  add_foreign_key "terms", "glosaries", on_delete: :cascade
+  add_foreign_key "translations", "episodes", on_delete: :cascade
+  add_foreign_key "translations", "users", column: "translator_id", on_delete: :cascade
 end

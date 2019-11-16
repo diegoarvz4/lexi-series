@@ -17,6 +17,10 @@
           <span><%= link_to "#{count_episodes(series)} Episodes", series %>  </span>
           <span>|</span>
           <span><%= link_to 'Add Episode', new_episode_path(series: series.id) %>
+          <% if current_user.admin? %>
+            <span>|</span>
+            <span><%= link_to 'Eliminar', series, method: :delete %>
+          <% end %>
         </div>
     </div>
   <% end %>
