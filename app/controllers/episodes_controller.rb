@@ -58,7 +58,7 @@ class EpisodesController < ApplicationController
     dubcard_chars = params[:episode][:dubcard_characters]
     dubcard_chars.split(/\s\s+/)
     .uniq
-    .reject{|ch| ch.downcase == 'personaje' || ch.downcase == 'inserto'}
+    .reject{|ch| ch.downcase == 'personaje' || ch.downcase == 'inserto' || ch.downcase == 'ambiente'}
     .sort
     .join(',')
   end

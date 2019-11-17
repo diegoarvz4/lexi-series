@@ -8,6 +8,10 @@ class CharactersController < ApplicationController
   def new
     @character = Character.new
     @series = Series.find_by(id: params[:series])
+    @name = nil
+    if params[:character]
+      @name = params[:character]
+    end
   end
 
   def edit
@@ -42,6 +46,7 @@ class CharactersController < ApplicationController
 
   def show
     @character = Character.find_by(id: params[:id])
+    @series = @character.series
     @characters_related = @character.relationships.map{|relationship| relationship.related} # (&:related)
     @characters_related += @character.inverse_relationships.map{|relationship| relationship.character}
     @characters_related.sort_by{ |character| character.name}

@@ -58,13 +58,14 @@
     <h1>Episodes</h1>
     <div class="aux__add"><span><%= link_to "+", new_episode_path(series: @series.id) %></span></div>
     <ul class="list-group">
-      <% @series.episodes.each do |episode|%>
+      <% sorted_episodes.each do |episode|%>
         <li class="list-group-item series-show-episode"><%= link_to "Ep#{episode.number}", episode %> 
             <div>
+              <% if episode.dubcard_characters %>
+                <span class="series-show-episode__job"><%= link_to 'DUBCARD', episode %></span>
+              <% end %>
               <% if episode.translation%>
-                  <% if episode.dubcard_characters %>
-                    <span class="series-show-episode__job"><%= link_to 'DUBCARD', episode %></span>
-                  <% end %>
+                  
                 <span class="series-show-episode__job"><%= link_to 'TRA', episode.translation %></span>
                   <% if episode.translation.quality_control%>
                     <span class="series-show-episode__job"><%= link_to 'QC', episode.translation.quality_control %></span>

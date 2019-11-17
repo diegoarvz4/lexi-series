@@ -18,4 +18,9 @@ module CharactersHelper
   def sorted_characters
     @characters.sort_by{|ch| ch.name }
   end
+
+  def appeareances
+    @series.episodes.select{|ep| ep if ep.dubcard_characters && ep.dubcard_characters.match(/#{@character.naming}/)}.sort_by{|ep| ep.number}
+  end
+
 end

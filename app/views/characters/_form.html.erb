@@ -13,10 +13,29 @@
       <h1><%= @series.name %> Character</h1>
       <%= f.hidden_field :series_id, :value => @series.id %>
 
-      <div class="form-group">
-        <%= f.label :name, "Name" %>
-        <%= f.text_field :name, class: 'form-control'%>
-      </div>
+      <% if @name %>
+        <div class="form-group">
+          <%= f.label :naming, "Dub name" %>
+          <%= f.text_field :naming, :value => @name, class: 'form-control'%>
+        </div>
+      <% else %>
+        <div class="form-group">
+          <%= f.label :naming, "Dub name" %>
+          <%= f.text_field :naming, class: 'form-control'%>
+        </div>
+      <% end %>
+
+      <% if @name %>
+        <div class="form-group">
+          <%= f.label :name, "Name" %>
+          <%= f.text_field :name, :value => @name, class: 'form-control'%>
+        </div>
+      <% else %>
+        <div class="form-group">
+          <%= f.label :name, "Name" %>
+          <%= f.text_field :name, class: 'form-control'%>
+        </div>
+      <% end %>
 
       <div class="form-group">
         <%= f.label :description %>

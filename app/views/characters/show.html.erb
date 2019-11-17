@@ -19,7 +19,16 @@
     </span>
     <p><%= @character.description %></p>
     <hr>
-    <span>Episodios: </span>
+    <div class="characters-appearances">
+    <span class="characters-appearances-title">Episodios: </span>
+      <div class="characters-appearances-container">
+        <% appeareances.each do |episode| %>
+          <div class="characters-appearances-container-episode">
+            <%= link_to episode.number, episode %>
+          </div>
+        <% end %>
+      </div>
+    </div>
     <hr>
   </div>
   <div class="col-sm-6 characters-main-img">
