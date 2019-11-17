@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_16_035713) do
+ActiveRecord::Schema.define(version: 2019_11_17_052046) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -175,7 +175,7 @@ ActiveRecord::Schema.define(version: 2019_11_16_035713) do
   add_foreign_key "glosaries", "series", on_delete: :cascade
   add_foreign_key "quality_controls", "translations", on_delete: :cascade
   add_foreign_key "quality_controls", "users", column: "reviewer_id"
-  add_foreign_key "relationships", "characters", column: "related_id"
+  add_foreign_key "relationships", "characters", column: "related_id", on_delete: :cascade
   add_foreign_key "relationships", "characters", on_delete: :cascade
   add_foreign_key "roles", "users"
   add_foreign_key "series_requests", "series", on_delete: :cascade
