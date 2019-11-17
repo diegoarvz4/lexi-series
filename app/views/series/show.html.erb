@@ -108,7 +108,7 @@
   </div>
 
   <div class="col-md-6 col-sm-12 series-show">
-    <h1>Characters</h1>
+    <h1><%= link_to 'Characters', characters_path(series_id: @series.id) %> </h1>
     <div class="aux__add"><span><%= link_to "+".html_safe, new_character_path(series: @series.id) %></span></div>
     <ul class="ist-group">
       <% unless @characters.empty? %>

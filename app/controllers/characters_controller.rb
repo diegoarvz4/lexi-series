@@ -1,4 +1,10 @@
 class CharactersController < ApplicationController
+  
+  def index
+    @series = Series.find_by(id: params[:series_id])
+    @characters = @series.characters
+  end
+
   def new
     @character = Character.new
     @series = Series.find_by(id: params[:series])
