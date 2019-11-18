@@ -38,7 +38,18 @@
 
 <hr>
 
+<div class="row">
+  <div class="col-sm-12 characters-treatment" >
+    <h1>Tratamiento</h1>
+    <% if @character.treatment %>
+      <span><%= @character.treatment %></span>
+    <% else %>
+      <span>No hay tratamiento específico para este personaje</span>
+    <% end %>
+  </div>
+</div>
 
+<hr>
 
 <div class="row">
   <div class="col-sm-6 series-show">
@@ -56,13 +67,14 @@
           <%= image_tag character.picture.url, class: "characters-img" if character.picture? %>
           <% if relationship?(@character, character) %>
             <span class="characters-related"><%= link_to "#{character.name}", relationship_path(relationship(@character, character).id) %></span>
+            <span class="characters-related-minidesc"><%= truncate(relationship(@character, character).description, length: 50) %></span>
           <% end %>
         </li>
       <%end%>
     </ul>
   </div>
   <div class="col-sm-6">
-    <h1>Catch Phrases</h1>
+    <h1 class="second-title">Catch Phrases</h1>
     <div class="characters-add">
       <%= link_to "#{image_tag('add.svg', class:'series-show-add')}".html_safe, 
            edit_character_path(@character)
@@ -87,7 +99,7 @@
 <hr>
 
 <div class="characters-carousel">
-  <h1>Más imágenes</h1>
+  <h1 class="second-title">Más imágenes</h1>
   <%= render 'carousel' if @character_imgs.length > 0 %>
   <span><%= link_to 'Agregar Foto', new_character_image_path(character_id: @character.id) %></span>
 </div>

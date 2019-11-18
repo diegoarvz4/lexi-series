@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_17_052046) do
+ActiveRecord::Schema.define(version: 2019_11_18_171621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2019_11_17_052046) do
     t.bigint "dubcard_id"
     t.string "naming"
     t.string "catch_phrases"
+    t.string "treatment"
     t.index ["dubcard_id"], name: "index_characters_on_dubcard_id"
     t.index ["series_id"], name: "index_characters_on_series_id"
   end

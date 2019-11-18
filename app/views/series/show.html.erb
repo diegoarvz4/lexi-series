@@ -3,10 +3,26 @@
   <div class="col-sm-6 series-show">
   <div><%= link_to "Back", request.referrer %></div>
     <h1><%= @series.name %> </h1>
+    <hr>
+      <span><%= link_to 'Ver Índice de Personajes', characters_path(series_id: @series.id) %></span>
+    <hr>
     <span class="series-container-title series-show-edit">
       <%= link_to "#{image_tag('edit.svg', class:'picture img-responsive img-rounded')}".html_safe, edit_series_path(@series) %>
     </span>
-    <p><%= @series.description %></p>
+    <p class="series-container-description">
+      <% if @series.description.length > 25 %>
+        <%= truncate(@series.description, length: 250) %>
+        <%= link_to '...Leer más', '', class: "read-more-#{@series.id}" %>
+        <script>
+          $('.read-more-<%= @series.id %>').on('click', function(e) {
+            e.preventDefault()
+            $(this).parent().html('<%= escape_javascript @series.description %>')
+          })
+        </script>
+      <% else %>
+        <%= @series.description %>
+      <% end %>
+    </p>
   </div>
   <div class="col-sm-6 series-show-picture">
     <%= link_to "#{image_tag(@series.picture.url, class: 'img-rounded')}".html_safe, @series if @series.picture?%>
@@ -55,7 +71,7 @@
 <hr>
 <div class="row">
   <div class="col-md-6 col-sm-12 series-show">
-    <h1>Episodes</h1>
+    <h1>Episodios</h1>
     <div class="aux__add"><span><%= link_to "+", new_episode_path(series: @series.id) %></span></div>
     <ul class="list-group">
       <% sorted_episodes.each do |episode|%>
@@ -109,7 +125,7 @@
   </div>
 
   <div class="col-md-6 col-sm-12 series-show">
-    <h1><%= link_to 'Characters', characters_path(series_id: @series.id) %> </h1>
+    <h1><%= link_to 'Personajes', characters_path(series_id: @series.id) %> </h1>
     <div class="aux__add"><span><%= link_to "+".html_safe, new_character_path(series: @series.id) %></span></div>
     <ul class="ist-group">
       <% unless @characters.empty? %>

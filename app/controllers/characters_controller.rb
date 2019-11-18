@@ -56,6 +56,6 @@ class CharactersController < ApplicationController
   private 
 
     def character_params
-      params.require(:character).permit(:name, :description, :picture, :naming, :catch_phrases)
+      params.require(:character).permit(:name, :description, :picture, :naming, :treatment, :catch_phrases)
     end 
 end

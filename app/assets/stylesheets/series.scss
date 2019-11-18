@@ -4,23 +4,22 @@
 .series{
 
  &-container{
-   border: 1px solid gray;
-   border-radius: 10px;
-   padding: 10px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 10px;
 
-   &-title{
-     display: flex;
-     flex-wrap: no-wrap; 
-     align-items: flex-start;
-     justify-content: space-between;
-     img{
-       min-width: 30px;
-       padding: 6px;
-       border: 1px solid gray; 
-       border-radius: 50px;
-     }
-   }
-   
+  &-title{
+    display: flex;
+    flex-wrap: no-wrap; 
+    align-items: flex-start;
+    justify-content: space-between;
+    img{
+      min-width: 30px;
+      padding: 6px;
+      border: 1px solid gray; 
+      border-radius: 50px;
+    }
+  }   
  }
 
  &-picture{
@@ -68,8 +67,10 @@
    }
 
    p{
-     font-size: 15px;
-   }
+    font-size: 15px;
+    line-height: 28px;
+    letter-spacing: 1px;
+  }
 
    &-add{
     width: 20px; 

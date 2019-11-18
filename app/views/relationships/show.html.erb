@@ -1,31 +1,30 @@
-<h1><%= @character.series.name %></h1>
+ <h1>
+  <%= link_to @character.name, @character %> y <%= link_to @related.name, @related %> 
+</h1>
 <hr>
-<div><%= link_to "#{image_tag('edit.svg', class:'relationships-add')}".html_safe, edit_relationship_path(@relationship.id) %></div>
-<hr>
-<div class="row relationships">
-  <div class="col-sm-12 col-md-2">
-    <div class="row">
-      <h1><%= link_to @character.name, @character %> </h1>
-      <!-- p><%= @character.description %></p -->  
-      <%= image_tag @character.picture.url, class: 'img-rounded img-responsive' if @character.picture? %>
-    </div>
-  </div>
-
-  <div class="col-sm-12 col-md-8">
-    <p class="relationships-description">
-      <q>
-        <%= @relationship.description %>
-      </q>
-    </p>
-  </div>
-
-  <div class="col-sm-12 col-md-2">
-    <div class="row">
-      <h1><%= link_to @related.name, @related %> </h1>
-      <!-- p><%= @related.description %></p -->  
-      <%= image_tag @related.picture.url, class: 'img-rounded img-responsive' if @related.picture? %>
-    </div>
-  </div>
-
+ <div class="episodes-series-container">
+  <%= image_tag @character.series.picture.url, class: 'episodes-series-image ' if @character.series.picture? %>
+  <h5 class="episodes-series"><%= link_to @character.series.name, @character.series %></h5> 
+  <hr>
+  <span class="series-container-title series-show-edit">
+      <%= link_to "#{image_tag('edit.svg', class:'relationships-add')}".html_safe, edit_relationship_path(@relationship.id) %>
+  </span>
 </div>
+<hr>
+<div class="relationships-container">
+  <div class="relationships-container-character">
+    <%= image_tag @character.picture.url if @character.picture? %>
+  </div>
+  <div class="relationships-container-related">
+    <%= image_tag @related.picture.url if @related.picture? %>
+  </div>
+</div>
+<hr>
+<div class="relationships-description">
+  <p>
+    <%= @relationship.description %>
+  </p>
+</div>
+<hr>
+
 

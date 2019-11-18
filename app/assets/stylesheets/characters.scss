@@ -29,6 +29,10 @@
 
   &-related{
     font-size: 20px;
+    &-minidesc{
+      font-style: italic;
+      margin-left: 20px
+    }
   }
 
   &-img{
@@ -62,6 +66,23 @@
       }
     }
   }
+  &-treatment{
+    margin-bottom: 30px;
+    h1{
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+
+    span{
+      font-size: 20px;
+      line-height: 25px;
+      letter-spacing: 1px;
+    }
+  }
+}
+
+.second-title{
+  font-weight: bold;
 }
 
 .carousel{

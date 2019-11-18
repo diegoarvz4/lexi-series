@@ -20,7 +20,7 @@ module CharactersHelper
   end
 
   def appeareances
+    return [] if @character.naming.blank?
     @series.episodes.select{|ep| ep if ep.dubcard_characters && ep.dubcard_characters.match(/#{@character.naming}/)}.sort_by{|ep| ep.number}
   end
-
 end
