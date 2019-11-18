@@ -28,7 +28,7 @@
       </ul>
     <%end%>
 
-    <h2>Mis series</h2>
+    <h2 class="second-title">Mis series</h2>
     <% unless @series.empty? %>
       <ul class="list-group">
         <% @series.each do |series|%>
@@ -36,16 +36,36 @@
         <%end%>
       </ul>
     <% else %>
-      <span>You don't have any series for now</span>
+      <span>No tienes series por ahora</span>
     <% end %>
     <hr>
-    <h2>Traducciones</h2>
+    <h2 class="second-title">Mis Traducciones</h2>
+    <hr>
     <% unless current_user.translations.empty? %>
+      <h3>En progreso</h3>
       <ul class="list-group">
       <% current_user.translations.select{|tra| tra.status == 'in progress' }.each do |tra| %>
-        <li class="list-group-item"> <%= link_to "Episodio #{tra.episode.number} de #{tra.episode.series.name}", tra %> <span> (<%= tra.status %> </span>) </li>
+        <li class="list-group-item tra-status-home"> 
+          <%= link_to "Ep #{tra.episode.number} de #{tra.episode.series.name}", tra %> 
+          <span class="<%= tra_state(tra)[1] %>-tra"><%= tra_state(tra)[0] if tra_state(tra)[0] == 'Retrasado'%></span>
+        </li>
       <% end %>
       </ul>
+      <hr>
+      <h3>Completadas</h3>
+      <% current_user.translations.select{|tra| tra.status == 'completed' }.each do |tra| %>
+        <li class="list-group-item"> <%= link_to "Ep #{tra.episode.number} de #{tra.episode.series.name}", tra %> </li>
+      <% end %>
+      <hr>
+      <h3>En revisión</h3>
+      <% current_user.translations.select{|tra| tra.status == 'qc' }.each do |tra| %>
+        <li class="list-group-item"> <%= link_to "Ep #{tra.episode.number} de #{tra.episode.series.name}", tra %> </li>
+      <% end %>
+      <hr>
+      <h3>Revisadas</h3>
+      <% current_user.translations.select{|tra| tra.status == 'completed' && tra.quality_control }.each do |tra| %>
+        <li class="list-group-item"> <%= link_to "Ep #{tra.episode.number} de #{tra.episode.series.name}", tra.quality_control %> por <%= link_to tra.quality_control.reviewer.username, tra.quality_control.reviewer %> </li>
+      <% end %>
     <% else %>
       <span>No tienes traducciones pendientes</span>
     <% end %>

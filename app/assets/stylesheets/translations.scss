@@ -110,3 +110,13 @@
 #editTranslationContainer{
   display: flex;
 }
+
+.tra-status-home{
+  .delayed-tra{
+    margin-left: 10px;
+    border: 1px solid red;
+    padding: 5px;
+    border-radius: 12px;
+    color: red;
+  }
+}

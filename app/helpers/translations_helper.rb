@@ -84,8 +84,8 @@ module TranslationsHelper
     end
   end
 
-  def tra_state
-    _date = @translation.duedate
+  def tra_state(translation = @translation)
+    _date = translation.duedate
     unless Date.parse("#{_date.year}-#{_date.month}-#{_date.day}") < Date.today
       return ['A tiempo', 'onTime']
     else
@@ -93,8 +93,8 @@ module TranslationsHelper
     end
   end
 
-  def tra_status
-    case @translation.status
+  def tra_status(translation = @translation)
+    case translation.status
     when 'in progress'
       'En progreso'
     when 'completed'
@@ -117,5 +117,10 @@ module TranslationsHelper
   def isTranslator?
     current_user == @translation.translator || current_user.admin?
   end
+
+  def sorted_tra_production
+    @translations.sort_by{|tra| tra.duedate}
+  end
+
 
 end

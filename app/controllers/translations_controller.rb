@@ -1,6 +1,6 @@
 class TranslationsController < ApplicationController
 
-  before_action :require_admin, only: [:create, :update]
+  before_action :require_admin, only: [:create, :index]
 
   def new
     @series = Series.find_by(id: params[:series])
@@ -46,6 +46,7 @@ class TranslationsController < ApplicationController
   end
 
   def index
+    @translations = Translation.all
   end
 
   def destroy

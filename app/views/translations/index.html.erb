@@ -1,2 +1,28 @@
-<h1>Translations#index</h1>
-<p>Find me in app/views/translations/index.html.erb</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th score="col">Serie</th>
+      <th score="col">EP</th>
+      <th score="col">TRA</th>
+      <th score="col">QC</th>
+      <th score="col">Fecha TRA</th>
+      <th score="col">Fecha CLN</th>
+      <th score="col">Estado</th>
+    </tr>
+  
+  </thead>
+
+  <tbody >
+      <% @translations.each do |tra| %>
+        <tr>
+          <td> <%= link_to tra.episode.series.name, tra.episode.series %></td>
+          <td> <%= link_to tra.episode.number, tra.episode %></td>
+          <td> <%= link_to tra.translator.username, tra %></td>
+          <td> <%= link_to tra.quality_control.reviewer.username, tra.quality_control if tra.quality_control %></td>
+          <td> <%= tra.duedate.strftime("%m/%d/%Y")   %></td>
+          <td> <%=  %></td>
+          <td> <%= tra_status(tra) %></td>
+        </tr>
+      <% end %>
+  </tbody>
+</table>
