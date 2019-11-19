@@ -13,15 +13,15 @@
   </thead>
 
   <tbody >
-      <% @translations.each do |tra| %>
+      <% sorted_tra_production.each do |tra| %>
         <tr>
           <td> <%= link_to tra.episode.series.name, tra.episode.series %></td>
           <td> <%= link_to tra.episode.number, tra.episode %></td>
           <td> <%= link_to tra.translator.username, tra %></td>
           <td> <%= link_to tra.quality_control.reviewer.username, tra.quality_control if tra.quality_control %></td>
-          <td> <%= tra.duedate.strftime("%m/%d/%Y")   %></td>
+          <td class="<%= delayed?(tra) %>"> <%= tra.duedate.strftime("%m/%d/%Y")   %></td>
           <td> <%=  %></td>
-          <td> <%= tra_status(tra) %></td>
+          <td class="<%= tra_status_style(tra) %>"> <%= tra_status(tra) %></td>
         </tr>
       <% end %>
   </tbody>

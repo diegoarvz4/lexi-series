@@ -24,7 +24,7 @@
 
       <div class="form-group">
         <%= f.label :dubcard_characters %>
-        <%= f.text_area :dubcard_characters, cols: "30", rows: "20", class: 'form-control'%>
+        <%= f.text_area :dubcard_characters, cols: "30", rows: "20",class: 'form-control', :value => edit_dubcard_display if @episode.dubcard_characters  %>
       </div>
     <%= f.submit "Submit Episode", class: 'btn btn-default form-button'%>
   <%end%>

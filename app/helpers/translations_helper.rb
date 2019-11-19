@@ -110,6 +110,23 @@ module TranslationsHelper
     end
   end
 
+  def tra_status_style(translation = @translation)
+    case translation.status
+    when 'in progress'
+      'bg-primary'
+    when 'completed'
+      'bg-success'
+    when 'suspended'
+      'Suspendida'
+    when 'canceled'
+      'Cancelada'
+    when 'qc'
+      'bg-warning'
+    else
+      'Sin estado'
+    end
+  end
+
   def completed?
     @translation.status == 'completed'
   end
@@ -120,6 +137,14 @@ module TranslationsHelper
 
   def sorted_tra_production
     @translations.sort_by{|tra| tra.duedate}
+  end
+
+  def delayed?(tra)
+    _date = tra.duedate
+    if tra.status == 'in progress' && Date.parse("#{_date.year}-#{_date.month}-#{_date.day}") > Date.today
+      return 'delayed'
+    end
+    ''
   end
 
 

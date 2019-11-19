@@ -6,4 +6,13 @@ module EpisodesHelper
   def character_exists?(ch)
    Character.where(naming: ch).exists?
   end
+
+  def edit_dubcard_display
+    result = ''
+    characters = @episode.dubcard_characters
+    characters.split(',').each do |ch|
+      result += "#{ch} \n"
+    end      
+    result
+  end
 end
