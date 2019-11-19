@@ -10,6 +10,7 @@ module EpisodesHelper
   def edit_dubcard_display
     result = ''
     characters = @episode.dubcard_characters
+    return '' if characters == nil
     characters.split(',').each do |ch|
       result += "#{ch} \n"
     end      
