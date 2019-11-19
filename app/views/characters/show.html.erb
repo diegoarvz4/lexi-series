@@ -14,6 +14,17 @@
     <hr>
     <h5 >DUB NAME: <span class="characters-dubname"><%= @character.naming %></span> </h5>
     <hr>
+
+    <div class="characterTags">
+      <div id="characterTagsContainer">
+        <%= render @character_tags %>
+      </div>
+      <button id="addCharacterTag" class="btn btn-primary">+HT</button>
+      <div id="addCharacterTagForm"><%= render 'character_tag_form'%></div>
+    </div>
+
+    <hr>
+
     <span class="series-container-title series-show-edit">
       <%= link_to "#{image_tag('edit.svg', class:'picture img-responsive')}".html_safe, edit_character_path(@character) %>
     </span>
@@ -105,3 +116,5 @@
 </div>
 
 <hr>
+
+<%= javascript_include_tag "character" %>

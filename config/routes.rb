@@ -25,5 +25,6 @@ Rails.application.routes.draw do
   resources :terms
   resources :dubcards
   resources :character_images
+  resources :character_tags
   match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
 end

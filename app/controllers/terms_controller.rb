@@ -10,8 +10,6 @@ class TermsController < ApplicationController
                          dst_term: params[:term][:dst_term],
                          comments: params[:term][:comments])
     if @term.save
-      # flash.notice = "Término añadido"
-      # redirect_to @glosary
       respond_to do |format|
         format.html { redirect_to @glosary }
         format.js

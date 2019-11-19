@@ -1,0 +1,20 @@
+<div class="remote-form">
+  <%= form_for @character_tag, remote: true do |f| %>
+  <% if  @character_tag && @character_tag.errors.any? %>
+    <div>
+      <% @character_tag.errors.full_messages.each do |error|%>
+        <div class="alert alert-danger"> <%= error %> </div>
+      <% end %>
+    </div>
+  <% end %>
+    <div class="field">
+      <%= f.hidden_field :series_id, :value => @series.id %>
+      <%= f.hidden_field :character_id, :value => @character.id %>
+      <div class="form-group">
+        <%= f.label :content, 'HashTag' %>
+        <%= f.text_field :content, class: 'form-control chr-term'%>
+      </div>
+    </div>
+    <%= f.submit "Agregar HT", class: 'btn btn-default form-button'%>
+  <%end%>
+</div>

@@ -13,6 +13,7 @@ class SeriesController < ApplicationController
     @series = Series.find_by(id: params[:id])
     @episodes = @series.episodes
     @characters = @series.characters
+    
   end
 
   def new 

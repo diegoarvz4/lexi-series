@@ -15,8 +15,8 @@ module CharactersHelper
     @character.catch_phrases.gsub(/\s\s+/, "").split("+").reject{|n| n==""}
   end
 
-  def sorted_characters
-    @characters.sort_by{|ch| ch.name }
+  def sorted_characters(characters = @characters)
+    characters.sort_by{|ch| ch.name }
   end
 
   def appeareances

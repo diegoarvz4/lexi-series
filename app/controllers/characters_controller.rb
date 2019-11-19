@@ -51,6 +51,8 @@ class CharactersController < ApplicationController
     @characters_related += @character.inverse_relationships.map{|relationship| relationship.character}
     @characters_related.sort_by{ |character| character.name}
     @character_imgs = @character.character_images
+    @character_tag = CharacterTag.new
+    @character_tags = @character.character_tags
   end
 
   private 

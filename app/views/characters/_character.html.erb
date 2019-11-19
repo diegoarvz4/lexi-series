@@ -1,0 +1,6 @@
+<div class="index-characters-img"> 
+  <div class="index-characters-img-container">
+    <%= link_to "#{image_tag character.picture.url if character.picture?}".html_safe, character %>
+  </div>
+  <span class="index-characters-img-title"><%= link_to character.name, character %></span>
+</div>

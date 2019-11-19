@@ -8,4 +8,5 @@ class Character < ApplicationRecord
            foreign_key: 'related_id', dependent: :delete_all
   validates :name, uniqueness: true
   has_many :character_images, dependent: :delete_all
+  has_many :character_tags
 end

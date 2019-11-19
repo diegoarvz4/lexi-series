@@ -1,0 +1,17 @@
+<div class="episodes-series-container">
+  <div class="episodes-series-image">
+    <%= image_tag @character_tag.series.picture.url if @character_tag.series.picture? %>
+  </div>
+  <h5 class="episodes-series"><%= link_to @character_tag.series.name, @character_tag.series %></h5> 
+</div>
+<hr>
+<h1><%= link_to @character_tag.content, @character_tag.series  %></h1>
+<hr>
+<% if current_user.admin? %>
+  <span><%= link_to 'Eliminar', @character_tag, method: :delete %></span>
+<% end %>
+<hr>
+<div class="index-characters">
+  <%= render sorted_characters(characters_tagged_by) %>
+</div>
+

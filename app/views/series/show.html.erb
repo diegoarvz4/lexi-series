@@ -1,14 +1,26 @@
 <div class="row">
   
   <div class="col-sm-6 series-show">
-  <div><%= link_to "Back", request.referrer %></div>
     <h1><%= @series.name %> </h1>
+    <hr>
+      <% if @series.character_tags%>
+        <%= render @series.character_tags %>
+      <% else %>
+        <span>Sin HashTags</span>
+      <% end %>
     <hr>
       <span><%= link_to 'Ver Índice de Personajes', characters_path(series_id: @series.id) %></span>
     <hr>
     <span class="series-container-title series-show-edit">
       <%= link_to "#{image_tag('edit.svg', class:'picture img-responsive img-rounded')}".html_safe, edit_series_path(@series) %>
     </span>
+  </div>
+
+  <div class="col-sm-6 series-show-picture">
+    <%= link_to "#{image_tag(@series.picture.url, class: 'img-rounded')}".html_safe, @series if @series.picture?%>
+  </div>
+
+  <div class="col-sm-12 series-show series-show-container-description">
     <p class="series-container-description">
       <% if @series.description.length > 25 %>
         <%= truncate(@series.description, length: 250) %>
@@ -24,9 +36,7 @@
       <% end %>
     </p>
   </div>
-  <div class="col-sm-6 series-show-picture">
-    <%= link_to "#{image_tag(@series.picture.url, class: 'img-rounded')}".html_safe, @series if @series.picture?%>
-  </div>
+
 </div>
 
 <hr>
@@ -127,11 +137,13 @@
   <div class="col-md-6 col-sm-12 series-show">
     <h1><%= link_to 'Personajes', characters_path(series_id: @series.id) %> </h1>
     <div class="aux__add"><span><%= link_to "+".html_safe, new_character_path(series: @series.id) %></span></div>
-    <ul class="ist-group">
+    <ul class="list-group">
       <% unless @characters.empty? %>
         <% @characters.each do |character|%>
           <li class="list-group-item series-show-character">
-            <%= image_tag character.picture.url if character.picture? %>
+            <div class="series-show-character-img">
+              <%= image_tag character.picture.url if character.picture? %>
+            </div>
             <span><%= link_to "#{character.name}", character %></span>
           </li>
         <%end%>

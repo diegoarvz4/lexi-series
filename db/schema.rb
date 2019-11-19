@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_18_171621) do
+ActiveRecord::Schema.define(version: 2019_11_19_170253) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 2019_11_18_171621) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["character_id"], name: "index_character_images_on_character_id"
+  end
+
+  create_table "character_tags", force: :cascade do |t|
+    t.bigint "character_id"
+    t.bigint "series_id"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["character_id"], name: "index_character_tags_on_character_id"
+    t.index ["series_id"], name: "index_character_tags_on_series_id"
   end
 
   create_table "characters", force: :cascade do |t|
@@ -169,6 +179,8 @@ ActiveRecord::Schema.define(version: 2019_11_18_171621) do
   end
 
   add_foreign_key "character_images", "characters", on_delete: :cascade
+  add_foreign_key "character_tags", "characters"
+  add_foreign_key "character_tags", "series"
   add_foreign_key "characters", "dubcards"
   add_foreign_key "characters", "series", on_delete: :cascade
   add_foreign_key "dubcards", "episodes", on_delete: :cascade

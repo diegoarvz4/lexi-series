@@ -13,3 +13,4 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added.
 Rails.application.config.assets.precompile += %w( img-loader.js)
 Rails.application.config.assets.precompile += %w( glosary.js)
+Rails.application.config.assets.precompile += %w( character.js)
