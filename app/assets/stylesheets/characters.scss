@@ -141,3 +141,22 @@
 
 
 }
+
+.search-characters{
+  input{
+    border: 1px solid rgba(128, 128, 128, 0.336);
+    border-radius: 20px;
+    padding: 10px;
+  }
+  [type="submit"]{
+    border: 1px solid rgba(128, 128, 128, 0.356);
+    border-radius: 10px;
+    background-color: white;
+    font-weight: bold;
+    padding: 10px;
+    &:hover{
+      background-color: black;
+      color: white;
+    }
+  }
+}

@@ -9,29 +9,29 @@ class CharactersController < ApplicationController
   def characters_search
     @series = Series.find_by(id: params[:series_id])
     @characters_search = []
-    #@series.characters
-    #      .select{|character| character.name.downcase == params[:query].downcase}
+    if params[:query].blank?
+      @characters_search = @series.characters
+    else
+      @characters_words = params[:query].split(" ")
+      @series.characters.each do |character|
+        @characters_words.each do |word|
+          if character.name.downcase.match(/#{word.downcase}/)
+            @characters_search << character
+          end
+        end
+      end
+
+      @series.character_tags.each do |tag|
+        @characters_words.each do |word|
+          if tag.content.match(/#{word}/)
+            @characters_search += tag.characters
+          end
+        end
+      end
+
+      @characters_search.uniq!
+    end
     
-    @characters_words = params[:query].split(" ")
-
-    @series.characters.each do |character|
-      @characters_words.each do |word|
-        if character.name.downcase.match(/#{word.downcase}/)
-          @characters_search << character
-        end
-      end
-    end
-
-    @series.character_tags.each do |tag|
-      @characters_words.each do |word|
-        if tag.content.match(/#{word}/)
-          @characters_search += tag.characters
-        end
-      end
-    end
-
-    @characters_search.uniq!
-          
     respond_to do |format|
       format.js
     end

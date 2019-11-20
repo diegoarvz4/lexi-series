@@ -2,12 +2,12 @@
 <hr>
 
 
-<%= form_with(url: "/characters_search", method: "get", remote: true, class:'form-inline') do %>
+<%= form_with(url: "/characters_search", method: "get", remote: true, class:'form-inline search-characters search-characters-form') do %>
   <div class="form-group">
     <%= hidden_field_tag(:series_id, @series.id) %>
     <%= text_field_tag(:query) %>
   </div>
-  <%= submit_tag("Search") %>
+  <%= submit_tag("Buscar")%>
 <% end %>
 
 
