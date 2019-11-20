@@ -15,7 +15,8 @@ class CharactersController < ApplicationController
       @characters_words = params[:query].split(" ")
       @series.characters.each do |character|
         @characters_words.each do |word|
-          if character.name.downcase.match(/#{word.downcase}/)
+          if character.name.downcase.include?(word.downcase)
+          #if character.name.downcase.match(/#{word.downcase}/)
             @characters_search << character
           end
         end
@@ -23,7 +24,8 @@ class CharactersController < ApplicationController
 
       @series.character_tags.each do |tag|
         @characters_words.each do |word|
-          if tag.content.match(/#{word}/)
+          if tag.content.downcase.include?(word.downcase)
+          #if tag.content.match(/#{word}/)
             @characters_search += tag.characters
           end
         end
