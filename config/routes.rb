@@ -26,5 +26,7 @@ Rails.application.routes.draw do
   resources :dubcards
   resources :character_images
   resources :character_tags
+
+  get '/characters_search', to: 'characters#characters_search'
   match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
 end

@@ -1,5 +1,17 @@
 <h1 class="index-characters-maintitle">Personajes</h1>
 <hr>
+
+
+<%= form_with(url: "/characters_search", method: "get", remote: true, class:'form-inline') do %>
+  <div class="form-group">
+    <%= hidden_field_tag(:series_id, @series.id) %>
+    <%= text_field_tag(:query) %>
+  </div>
+  <%= submit_tag("Search") %>
+<% end %>
+
+
+<hr>
 <div class="episodes-series-container">
    <%= link_to "#{image_tag @series.picture.url, class: 'episodes-series-image ' if @series.picture?}".html_safe, @series %>
   <h5 class="episodes-series"><%= link_to @series.name, @series %></h5> 

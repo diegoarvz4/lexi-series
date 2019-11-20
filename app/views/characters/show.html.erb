@@ -74,8 +74,9 @@
     <ul class="list-group">
       <% @characters_related.each do |character|%>
         <li class="list-group-item series-show-character characters-list">
-          
-          <%= image_tag character.picture.url, class: "characters-img" if character.picture? %>
+          <div class="series-show-character-img">
+            <%= image_tag character.picture.url, class: "characters-img" if character.picture? %>
+          </div>
           <% if relationship?(@character, character) %>
             <span class="characters-related"><%= link_to "#{character.name}", relationship_path(relationship(@character, character).id) %></span>
             <span class="characters-related-minidesc"><%= truncate(relationship(@character, character).description, length: 50) %></span>

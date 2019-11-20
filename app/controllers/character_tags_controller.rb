@@ -14,23 +14,38 @@ class CharacterTagsController < ApplicationController
     @character = Character.find_by(id: params[:character_tag][:character_id])
     @series = Series.find_by(id: params[:character_tag][:series_id])
 
-    @character_tag = CharacterTag.new(series_id: @series.id,
-                          character_id: @character.id,
-                          content: params[:character_tag][:content])
-    if @character_tag.save
+    if @character_tag = CharacterTag.find_by(content: params[:character_tag][:content])
+      @character_tag.characters << @character
       respond_to do |format|
         format.html { redirect_to @character_tag }
         format.js
       end
     else
-      render 'new'
-    end
+      @character_tag = CharacterTag.new(series_id: @series.id,
+        content: params[:character_tag][:content])
+      if @character_tag.save
+        @character_tag.characters << @character
+        respond_to do |format|
+          format.html { redirect_to @character_tag }
+          format.js
+        end
+      else
+        render 'new'
+      end
+    end    
   end
 
   def edit
   end
 
   def update
+    @character = Character.find_by(id: params[:character_tag][:character_id])
+    @character_tag = CharacterTag.find_by(id: params[:id])
+    @character_tag.characters << @character
+    respond_to do |format|
+      format.html { redirect_to @character_tag }
+      format.js
+    end
   end
 
   def destroy

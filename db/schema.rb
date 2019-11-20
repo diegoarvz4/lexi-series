@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_19_170253) do
+ActiveRecord::Schema.define(version: 2019_11_19_214218) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,13 @@ ActiveRecord::Schema.define(version: 2019_11_19_170253) do
     t.datetime "updated_at", null: false
     t.index ["character_id"], name: "index_character_tags_on_character_id"
     t.index ["series_id"], name: "index_character_tags_on_series_id"
+  end
+
+  create_table "character_tags_characters", id: false, force: :cascade do |t|
+    t.bigint "character_id", null: false
+    t.bigint "character_tag_id", null: false
+    t.index ["character_id", "character_tag_id"], name: "ch_and_tags_group_index"
+    t.index ["character_tag_id", "character_id"], name: "chtags_and_ch_group_index"
   end
 
   create_table "characters", force: :cascade do |t|
@@ -179,7 +186,6 @@ ActiveRecord::Schema.define(version: 2019_11_19_170253) do
   end
 
   add_foreign_key "character_images", "characters", on_delete: :cascade
-  add_foreign_key "character_tags", "characters"
   add_foreign_key "character_tags", "series"
   add_foreign_key "characters", "dubcards"
   add_foreign_key "characters", "series", on_delete: :cascade

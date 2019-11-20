@@ -3,6 +3,28 @@ class CharactersController < ApplicationController
   def index
     @series = Series.find_by(id: params[:series_id])
     @characters = @series.characters
+    @character = Character.new
+  end
+
+  def characters_search
+    @series = Series.find_by(id: params[:series_id])
+    @characters_search = @series.characters
+          .select{|character| character.name.downcase == params[:query].downcase}
+    
+    @characters_words = params[:query].downcase.split(" ")
+
+    @series.characters.each do |character|
+      @characters_words.each do |word|
+        if character.name.downcase.match(/#{word}/)
+          @characters_search << character
+        end
+      end
+    end
+          
+          
+    respond_to do |format|
+      format.js
+    end
   end
 
   def new
