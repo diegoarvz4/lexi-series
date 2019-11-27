@@ -59,6 +59,6 @@ class TranslationsController < ApplicationController
   end
 
   def translation_params
-    params.require(:translation).permit(:translation_id, :src_lang, :dst_lang, :runtime, :duedate, :status)
+    params.require(:translation).permit(:translation_id, :translator_id, :src_lang, :dst_lang, :runtime, :duedate, :status)
   end
 end
