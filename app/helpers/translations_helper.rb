@@ -141,8 +141,8 @@ module TranslationsHelper
 
   def delayed?(tra)
     _date = tra.duedate
-    if tra.status == 'in progress' && Date.parse("#{_date.year}-#{_date.month}-#{_date.day}") > Date.today
-      return 'delayed'
+    if tra.status == 'in progress'
+      return 'delayed' unless Date.parse("#{_date.year}-#{_date.month}-#{_date.day}") >= Date.today
     end
     ''
   end
