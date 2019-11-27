@@ -75,7 +75,12 @@ class CharactersController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
+    @character = Character.find_by(id: params[:id])
+    @series = @character.series
+    @character.destroy
+    flash.notice = 'Personaje eliminado exitosamente.'
+    redirect_to @series
   end
 
   def show
