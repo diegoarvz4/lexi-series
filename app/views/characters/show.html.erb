@@ -5,9 +5,11 @@
   </div>
   <h5 class="episodes-series"><%= link_to @character.series.name, @character.series %></h5> 
 </div>
-<hr>
-<span><%= link_to "Eliminar", @character, method: :delete %></span>
 
+<% if current_user.admin? %>
+  <hr>
+  <span><%= link_to "Eliminar", @character, method: :delete  %></span>
+<% end %>
 <hr>
 
 <div class="row">
