@@ -4,7 +4,7 @@ module EpisodesHelper
   end
 
   def character_exists?(ch)
-   Character.where(naming: ch).exists?
+   Character.where(naming: ch.upcase).exists?
   end
 
   def edit_dubcard_display

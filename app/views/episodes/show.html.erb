@@ -50,12 +50,12 @@
         <td><%= dch %></td>
         <td>
           <% if character_exists?(dch) %>
-            <%= link_to 'Ver', Character.find_by(naming: dch) %>
+            <%= link_to 'Ver', Character.find_by(naming: dch.upcase) %>
           <% else%>
             <%= link_to 'Añadir', new_character_path(character: dch, series: @series) %>
           <%end%>
         </td>
-        <td ><%= image_tag Character.find_by(naming: dch).picture.url, class:"dubcard_img" if  Character.where(naming: dch).exists? && Character.find_by(naming: dch).picture? %></td>
+        <td ><%= image_tag Character.find_by(naming: dch.upcase).picture.url, class:"dubcard_img" if  Character.where(naming: dch.upcase).exists? && Character.find_by(naming: dch.upcase).picture? %></td>
       </tr>
       <% end %>
     </tbody>
