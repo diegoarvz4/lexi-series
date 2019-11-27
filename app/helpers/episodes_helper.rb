@@ -16,4 +16,8 @@ module EpisodesHelper
     end      
     result
   end
+
+  def resume_paragraphs
+    @episode.resume.split("+").reject{|p| p.blank? }
+  end
 end

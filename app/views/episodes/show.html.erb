@@ -29,7 +29,14 @@
 
 <div class="episodes-resume">
   <h6>Resumen</h6>
-  <p><%= @episode.resume%></p>
+  <p>
+    <% resume_paragraphs.each do |paragraph| %>
+      <p>
+        <%= paragraph %>
+      </p>
+      <br>
+    <% end %>
+  </p>
   <span>updated <%= time_ago_in_words(@episode.updated_at) %> ago </span>
 </div>
 
