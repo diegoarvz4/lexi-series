@@ -1,5 +1,6 @@
 class SeriesController < ApplicationController
-
+  before_action :set_series, only: [:show]
+  before_action :require_access, only: [:show]
 
   def index
     if current_user.admin?
@@ -67,4 +68,14 @@ class SeriesController < ApplicationController
       params.require(:series).permit(:name, :description, :picture, :instructions)
     end
 
+    def require_access
+      unless current_user.admin? || @series.users.include?(current_user)
+        flash.alert = 'No tienes acceso a esta serie'
+        redirect_to root_path 
+      end
+    end
+
+    def set_series
+      @series = Series.find_by(id: params[:id])
+    end
 end
