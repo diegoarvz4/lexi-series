@@ -1,6 +1,7 @@
 class TranslationsController < ApplicationController
 
   before_action :require_admin, only: [:create, :index]
+  before_action :require_translator, only: [:show]
 
   def new
     @series = Series.find_by(id: params[:series])
@@ -32,6 +33,7 @@ class TranslationsController < ApplicationController
       flash.notice = 'Traducción Actualizada'
       redirect_to @translation
     else
+      @work_users = User.joins(:roles).where('roles.category = ?', 'TRANSLATOR')
       render 'edit'
     end
   end
@@ -59,7 +61,23 @@ class TranslationsController < ApplicationController
     redirect_to request.referrer unless current_user.admin
   end
 
+  def require_translator
+    @translation = Translation.find_by(id: params[:id])
+    unless current_user.admin || current_user == @translation.translator || (@translation.quality_control && current_user == @translation.quality_control.reviewer)
+      flash.alert = "Sin acceso."
+      redirect_to request.referrer 
+    end
+  end
+
   def translation_params
-    params.require(:translation).permit(:translation_id, :translator_id, :src_lang, :dst_lang, :runtime, :duedate, :status)
+    params.require(:translation).permit(:translation_id,
+      :translator_id,
+      :src_lang,
+      :dst_lang,
+      :runtime,
+      :duedate,
+      :status,
+      :files_url,
+      :video_url)
   end
 end

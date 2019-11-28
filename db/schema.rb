@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_19_214218) do
+ActiveRecord::Schema.define(version: 2019_11_28_024942) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -165,6 +165,8 @@ ActiveRecord::Schema.define(version: 2019_11_19_214218) do
     t.string "src_lang"
     t.string "dst_lang"
     t.integer "runtime"
+    t.string "files_url"
+    t.string "video_url"
     t.index ["episode_id"], name: "index_translations_on_episode_id"
     t.index ["translator_id"], name: "index_translations_on_translator_id"
   end
