@@ -28,12 +28,12 @@
   <h2>Archivos (Links)</h2>
   <div class="translation-files-container"><span class="translation-files-subtitle">Formatos:</span> 
     <span class="translation-files-link">
-      <%= link_to truncate(@translation.files_url, length: 50), @translation.files_url, :target => "_blank" %>
+      <%= link_to truncate(@translation.files_url, length: 50), @translation.files_url, :target => "_blank" if @translation.files_url%>
     </span>
   </div>
   <div class="translation-files-container"><span class="translation-files-subtitle">Video:</span> 
     <span class="translation-files-link">
-      <%= link_to truncate(@translation.video_url, length: 50), @translation.video_url, :target => "_blank" %>
+      <%= link_to truncate(@translation.video_url, length: 50), @translation.video_url, :target => "_blank" if @translation.video_url%>
     </span>
   </div>
 </div>

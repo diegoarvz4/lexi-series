@@ -38,6 +38,16 @@
         <%= f.label :duedate, "Fecha Entrega" %>
         <%= f.date_field :duedate, class: 'form-control'%>
       </div>
+
+      <div class="form-group">
+        <%= f.label :files_url, "URL Archvios" %>
+        <%= f.text_field :files_url, class: 'form-control', value: 'https://'%>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :video_url, "URL Video" %>
+        <%= f.text_field :video_url, class: 'form-control', value: 'https://'%>
+      </div>
     <%= f.submit "Asignar Traducción", class: 'btn btn-default form-button'%>
   <%end%>
 </div>

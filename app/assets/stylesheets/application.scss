@@ -72,7 +72,21 @@
     
   }
 }
+/*
+.navbar-brand{
+  display: flex;
+  align-items: center;
+}*/
 
+.img-lexi-nav{
+  width: 37px;
+  height: 37px !important;
+  margin-right: 4px;
+  opacity: 0.5;
+  border-radius: 37px;
+  position: relative;
+  bottom: 9px;
+}
 
 /* footer {
   background-color: rgba(231, 228, 228, 0.76);
@@ -92,4 +106,29 @@
 .remote-form{
   width: 280px;
   margin: 40px 0;
+}
+
+.footer{
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  margin-top: 250px;
+  flex-wrap: wrap;
+  opacity: 0.2;
+  transition: all 0.4s;
+  &:hover{
+    opacity: 1;
+    cursor: pointer;
+  }
+  img{
+    width: 200px;
+    margin: 0 auto;
+  }
+  span{
+    color: white;
+    width: 100%;
+    text-align: center;
+  }
 }

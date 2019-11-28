@@ -1,12 +1,11 @@
 <div class="row">
-  <div class="col-sm-12">
-    
-  </div>
-  <div>
+  <div class="col-sm-12"></div>
+
   <div class="col-sm-6 user-show-header">
     <%= image_tag(@user.avatar.url, class:'thumbnail user-show__img') if @user.avatar? %>
     <span><%=  @user.username %></span>
   </div>
+
   <div class="col-sm-6">
     <div class="user-show-bio">
       <h2>Acerca de </h2> 
@@ -17,9 +16,9 @@
     <h2>Participación</h2> 
     <div class="user-show-roles">
       <% if @user.roles.any?{|role| role.category == 'TRANSLATOR'} %>
-      <span class="user-show-roles__item users-admin-role-work">
-        TRADUCTOR
-      </span>
+        <span class="user-show-roles__item users-admin-role-work">
+          TRADUCTOR
+        </span>
       <% end %>
       <% if @user.roles.any?{|role| role.category == 'QC'} %>
         <span class="user-show-roles__item users-admin-role-work users-admin-role-work-qc">
@@ -36,6 +35,6 @@
         <% end %>
       <% end %>
     </div>
-    
   </div>
 </div>
+<hr>

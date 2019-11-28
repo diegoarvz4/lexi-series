@@ -16,12 +16,16 @@ class TranslationsController < ApplicationController
                                duedate: params[:translation][:duedate],
                                src_lang: params[:translation][:src_lang],
                                dst_lang: params[:translation][:dst_lang],
-                               runtime: params[:translation][:runtime])
+                               runtime: params[:translation][:runtime],
+                               video_url: params[:translation][:video_url],
+                               files_url: params[:translation][:files_url])
     if @translation.save
       SeriesMailer.translation_assignment(@translation.translator, @episode.series, @episode, @translation).deliver_now
       flash.notice = 'Traducción Asignada'
       redirect_to @translation
     else
+      @work_users = User.joins(:roles).where('roles.category = ?', 'TRANSLATOR')
+      @series = @episode.series
       render 'new'
     end
   end
