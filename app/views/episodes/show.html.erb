@@ -41,6 +41,7 @@
 </div>
 
 <hr>
+<div>
 <h1>Dubcard</h1>
 <% if @dubcard != nil%>
   <table class="table">
@@ -66,9 +67,11 @@
       </tr>
       <% end %>
     </tbody>
+  </table>
   <% dubcard_characters.each do |character| %>
   <% end %>
   <%= link_to 'Editar Dubcard', edit_episode_path %>
 <% else %>
   <%= link_to 'Agregar Dubcard', edit_episode_path %>
 <% end %>
+</div>
