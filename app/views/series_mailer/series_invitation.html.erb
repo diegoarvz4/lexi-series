@@ -1,0 +1,15 @@
+  <h1 class="title">¡Hola <span class="username"><%= @user.username %>!</span></h1>
+    <div class="bar"></div>
+  <br>
+
+  <p>
+    Has sido invitado a participar en la serie <%= link_to @series.name, @series %>
+  </p>
+  <br>
+  <div class="series-img-container">
+    <%= image_tag @series.picture.url, class: 'series-img' if @series.picture? %>
+  </div>
+  <p>
+     <%= link_to '¡Haz click en este link', root_url %> para aceptar la invitación!
+  </p>
+  <br>

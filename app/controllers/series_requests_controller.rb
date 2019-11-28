@@ -7,6 +7,7 @@ class SeriesRequestsController < ApplicationController
                                        series_id: series.id,
                                        confirmed: false)
     if series_request.save
+      SeriesMailer.series_invitation(receiver, series).deliver_now
       flash.notice = "¡Invitación exitosa a serie
                      #{series.name} a #{receiver.username}!"
     else

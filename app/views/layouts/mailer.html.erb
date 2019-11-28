@@ -3,11 +3,98 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <style>
-      /* Email styles need to be inline */
+      html, body, div, span, applet, object, iframe,
+      h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+      a, abbr, acronym, address, big, cite, code,
+      del, dfn, em, img, ins, kbd, q, s, samp,
+      small, strike, strong, sub, sup, tt, var,
+      b, u, i, center,
+      dl, dt, dd, ol, ul, li,
+      fieldset, form, label, legend,
+      table, caption, tbody, tfoot, thead, tr, th, td,
+      article, aside, canvas, details, embed, 
+      figure, figcaption, footer, header, hgroup, 
+      menu, nav, output, ruby, section, summary,
+      time, mark, audio, video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+      }
+      /* HTML5 display-role reset for older browsers */
+      article, aside, details, figcaption, figure, 
+      footer, header, hgroup, menu, nav, section {
+        display: block;
+      }
+      body {
+        line-height: 1;
+      }
+      ol, ul {
+        list-style: none;
+      }
+      blockquote, q {
+        quotes: none;
+      }
+      blockquote:before, blockquote:after,
+      q:before, q:after {
+        content: '';
+        content: none;
+      }
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+      body{
+        font-family: 'Arial';
+        padding: 40px 40px; 
+        font-size: 20px;
+      }
+      .username{
+        font-weight: bold;
+      }
+      .mailer-container{
+        width: 600px;
+      }
+      .title{
+        font-size: 40px;
+        margin-bottom: 20px;
+      }
+      .atte{
+        margin-bottom: 20px;
+      }
+      .bold{
+        font-weight: bold;
+      }
+      .series-img-container{
+        width: 500px;
+        margin-bottom: 10px;
+        border-radius: 100px;
+      }
+      .series-img{
+        width: 500px;
+        padding: 20px;
+        border-radius: 30px;
+      }
+      .bar{
+        height: 20px;
+        width: 100%;
+        background-color: black;
+      }
     </style>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="mailer-container">
+      <%= yield %>
+      <br>
+      <div class="atte">Atte. </div>
+      <h5>El Equipo de <span class="bold">LEXI</span></h5>
+      <hr>
+      <span>
+        <a href="https://lexids.com.mx">lexids.com.mx</a>
+      </span>
+    <div>
   </body>
 </html>
