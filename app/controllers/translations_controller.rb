@@ -17,6 +17,7 @@ class TranslationsController < ApplicationController
                                dst_lang: params[:translation][:dst_lang],
                                runtime: params[:translation][:runtime])
     if @translation.save
+      SeriesMailer.translation_assignment(@translation.translator, @episode.series, @episode, @translation).deliver_now
       flash.notice = 'Traducción Asignada'
       redirect_to @translation
     else

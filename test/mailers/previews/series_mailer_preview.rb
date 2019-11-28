@@ -10,7 +10,11 @@ class SeriesMailerPreview < ActionMailer::Preview
 
   # Preview this email at http://localhost:3000/rails/mailers/series_mailer/translation_assignment
   def translation_assignment
-    SeriesMailer.translation_assignment
+    user = User.first
+    series = Series.first
+    episode = Episode.first
+    translation = Translation.first
+    SeriesMailer.translation_assignment(user, series, episode, translation)
   end
 
   # Preview this email at http://localhost:3000/rails/mailers/series_mailer/qc_revised
