@@ -50,7 +50,12 @@
   
   <div class="col-sm-12">
   <hr>
-    <p class="characters-description"><%= @character.description %></p>
+    <% description_character_paragraphs.each do |paragraph| %>
+      <p class="characters-description">
+        <%= paragraph %>
+      </p>
+      <br>
+    <% end %>
   <div>
 </div>
 

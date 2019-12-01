@@ -23,4 +23,8 @@ module CharactersHelper
     return [] if @character.naming.blank?
     @series.episodes.select{|ep| ep if ep.dubcard_characters && ep.dubcard_characters.upcase.match(/#{@character.naming}/)}.sort_by{|ep| ep.number}
   end
+
+  def description_character_paragraphs
+    @character.description.split("\n").reject{|p| p.blank? }
+  end
 end
