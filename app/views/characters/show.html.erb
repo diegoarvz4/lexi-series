@@ -11,12 +11,17 @@
   <span><%= link_to "Eliminar", @character, method: :delete  %></span>
 <% end %>
 <hr>
+<span class="series-container-title series-show-edit">
+  <%= link_to "#{image_tag('edit.svg', class:'picture img-responsive')}".html_safe, edit_character_path(@character) %>
+</span>
 
+<h1 class="characters-dubname"><%= @character.naming %></h1>
+<hr>
 <div class="row">
   <div class="col-sm-6 series-show">
-    <h1><%= @character.name %> </h1>
-    <hr>
-    <h5 >DUB NAME: <span class="characters-dubname"><%= @character.naming %></span> </h5>
+    <span>Nombre (y aliases): </span>
+    <span class="characters-namesAndAliases"> <%= @character.name %> </span>
+    
     <hr>
 
     <div class="characterTags">
@@ -25,14 +30,7 @@
       </div>
       <button id="addCharacterTag" class="btn btn-primary">+HT</button>
       <div id="addCharacterTagForm"><%= render 'character_tag_form'%></div>
-    </div>
-
-    <hr>
-
-    <span class="series-container-title series-show-edit">
-      <%= link_to "#{image_tag('edit.svg', class:'picture img-responsive')}".html_safe, edit_character_path(@character) %>
-    </span>
-    <p><%= @character.description %></p>
+    </div>    
     <hr>
     <div class="characters-appearances">
     <span class="characters-appearances-title">Episodios: </span>
@@ -49,6 +47,11 @@
   <div class="col-sm-6 characters-main-img">
     <%= image_tag @character.picture.url, class: '' if @character.picture? %>
   </div>
+  
+  <div class="col-sm-12">
+  <hr>
+    <p class="characters-description"><%= @character.description %></p>
+  <div>
 </div>
 
 <hr>

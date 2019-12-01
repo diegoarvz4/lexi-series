@@ -45,7 +45,22 @@
   }
 
   &-dubname{
-    font-weight: bold;
+    margin-top: 0 !important;
+    font-size: 70px;
+    letter-spacing: 3px;
+    font-weight: initial !important;
+  }
+
+  &-namesAndAliases{
+    font-size: 20px;
+
+  }
+
+  &-description{
+    font-size: 30px;
+    font-style: italic;
+    line-height: 45px;
+    letter-spacing: 1px;
   }
 
   &-appearances{

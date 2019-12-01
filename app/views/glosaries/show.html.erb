@@ -1,6 +1,7 @@
 <div class="container">
-  <h1><%= @glosary.title %></h1>
-  <span> Glosario </span> <span><%= link_to "Editar", edit_glosary_path(@glosary) %></span>
+  <h1><span class="sectionTitle"><%= @glosary.title %></span> <span class="label label-glosary">   GLOSARIO </span> </h1>
+  <hr>
+  <span><%= link_to "Editar", edit_glosary_path(@glosary) %></span>
   <hr>
   <div class="episodes-series-container">
     <div class="episodes-series-image">
@@ -24,7 +25,7 @@
     </thead>
 
     <tbody id="termsBodyContainer">
-      <%= render @terms %>
+      <%= render sorted_terms %>
     </tbody>
   </table>
 </div>

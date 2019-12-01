@@ -51,6 +51,21 @@
   display: block;
 }
 
+.sectionTitle{
+  font-size: 50px;
+  letter-spacing: 5px;
+}
+
+.label{
+  padding: 2px 10px;
+  font-size: 10px;
+  letter-spacing: initial;
+  &-glosary{
+    background-color: rgba(255, 255, 0, 0.616);
+    color: black;
+  }
+}
+
 .form-container{
   width: 60%;
   margin: 0 auto;
