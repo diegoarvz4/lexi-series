@@ -105,7 +105,7 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     dry-inflector (0.1.2)
     erubi (1.8.0)
-    excon (0.66.0)
+    excon (0.71.0)
     execjs (2.7.0)
     ffi (1.11.1)
     figaro (1.1.1)
