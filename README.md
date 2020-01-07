@@ -1,24 +1,58 @@
-# README
+# LEXI Dubbing Series
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+> This is a Ruby on Rails Application that works for making useful documentation for dubbing series purposes.
 
-Things you may want to cover:
+# Screenshot coming Soon!
 
-* Ruby version
+## Built With
 
-* System dependencies
+- Ruby on Rails
+- Devise
+- PostgreSQL
+- AWS S3
+- Bootstrap 3
 
-* Configuration
+## Getting Started
 
-* Database creation
+To get a local copy up and running follow these simple example steps.
 
-* Database initialization
+## Prerequisites
+  Ruby
+  Rails
+  PostgreSQL
+  A web Browser
 
-* How to run the test suite
+## Setup
+  Clone or download this Repository.
 
-* Services (job queues, cache servers, search engines, etc.)
+## Install
+  Run the following command on your terminal: `$ bundle install`, this will install all the required dependencies necesary for you to run this project locally.
 
-* Deployment instructions
+## Usage
+  Run the following command on your terminal: `$ rails s`, this will run a local server which can be accesed via a web browser in `https://localhost:3000`
 
-* ...
+## Deployment
+  https://shrouded-mountain-06720.herokuapp.com/
+
+
+# Authors
+
+## 👤 **Diego Luis Arvizu Gutiérrez**
+
+- Github: [@diegoarvz4](https://github.com/diegoarvz4)
+- Twitter: [@Ddiegoarvz4](https://twitter.com/diegoarvz4)
+- Linkedin: [/in/diego-arvz](https://linkedin.com/linkedinhandle)
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!
+
+Feel free to check the [issues page](issues/).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## 📝 License
+
+This project is Licensed under MIT
