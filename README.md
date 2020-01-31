@@ -1,6 +1,6 @@
 # LEXI Dubbing Series
 
-> This is a Ruby on Rails Application that works for making useful documentation for dubbing series purposes.
+> This is a Ruby on Rails Application that works for making useful documentation for dubbing series purposes. You can create a series, add characters, relationships, tagging, upload images and more!
 
 # Screenshot coming Soon!
 
@@ -38,6 +38,10 @@ To get a local copy up and running follow these simple example steps.
 ## Walkthrough
 
   https://www.loom.com/share/d070f39efef445a6bc966c64a09afb5c
+  
+## Future Features
+
+- Email confirmation and password reset
 
 # Authors
 
