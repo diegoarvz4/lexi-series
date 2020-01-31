@@ -17,10 +17,10 @@
 To get a local copy up and running follow these simple example steps.
 
 ## Prerequisites
-  Ruby
-  Rails
-  PostgreSQL
-  A web Browser
+- Ruby
+- Rails
+- PostgreSQL
+- A web Browser
 
 ## Setup
   Clone or download this Repository.
@@ -31,9 +31,13 @@ To get a local copy up and running follow these simple example steps.
 ## Usage
   Run the following command on your terminal: `$ rails s`, this will run a local server which can be accesed via a web browser in `https://localhost:3000`
 
-## Deployment
+## Live
+
   https://shrouded-mountain-06720.herokuapp.com/
 
+## Walkthrough
+
+  https://www.loom.com/share/d070f39efef445a6bc966c64a09afb5c
 
 # Authors
 
@@ -42,12 +46,6 @@ To get a local copy up and running follow these simple example steps.
 - Github: [@diegoarvz4](https://github.com/diegoarvz4)
 - Twitter: [@Ddiegoarvz4](https://twitter.com/diegoarvz4)
 - Linkedin: [/in/diego-arvz](https://linkedin.com/linkedinhandle)
-
-## 🤝 Contributing
-
-Contributions, issues and feature requests are welcome!
-
-Feel free to check the [issues page](issues/).
 
 ## Show your support
 
