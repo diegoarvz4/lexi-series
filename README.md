@@ -39,15 +39,15 @@ To get a local copy up and running follow these simple example steps.
 
   https://www.loom.com/share/d070f39efef445a6bc966c64a09afb5c
   
-  [Screen1](https://diegoarvz.s3-us-west-1.amazonaws.com/lexi_series_ss1.png)
+  ![Screen1](https://diegoarvz.s3-us-west-1.amazonaws.com/lexi_series_ss1.png)
   
-  [Screen2](https://diegoarvz.s3-us-west-1.amazonaws.com/lexi_series_ss2.png)
+  ![Screen2](https://diegoarvz.s3-us-west-1.amazonaws.com/lexi_series_ss2.png)
   
-  [Screen3](https://diegoarvz.s3-us-west-1.amazonaws.com/lexi_series_ss3.png)
+  ![Screen3](https://diegoarvz.s3-us-west-1.amazonaws.com/lexi_series_ss3.png)
   
-  [Screen4](https://diegoarvz.s3-us-west-1.amazonaws.com/lexi_series_ss4.png)
+  ![Screen4](https://diegoarvz.s3-us-west-1.amazonaws.com/lexi_series_ss4.png)
   
-  [Screen5](https://diegoarvz.s3-us-west-1.amazonaws.com/lexi_series_ss5.png)
+  ![Screen5](https://diegoarvz.s3-us-west-1.amazonaws.com/lexi_series_ss5.png)
   
 ## Future Features
 
