@@ -2,8 +2,6 @@
 
 > This is a Ruby on Rails Application that works for making useful documentation for dubbing series purposes. You can create a series, add characters, relationships, tagging, upload images and more!
 
-# Screenshot coming Soon!
-
 ## Built With
 
 - Ruby on Rails
