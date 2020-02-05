@@ -39,15 +39,26 @@ To get a local copy up and running follow these simple example steps.
 
   https://www.loom.com/share/d070f39efef445a6bc966c64a09afb5c
   
+  ### Series Dashboard
+  
   ![Screen1](https://diegoarvz.s3-us-west-1.amazonaws.com/lexi_series_ss1.png "Series Dashboard")
   
-  ![Screen2](https://diegoarvz.s3-us-west-1.amazonaws.com/lexi_series_ss2.png)
-  
-  ![Screen3](https://diegoarvz.s3-us-west-1.amazonaws.com/lexi_series_ss3.png)
+  ### Index Characters
   
   ![Screen4](https://diegoarvz.s3-us-west-1.amazonaws.com/lexi_series_ss4.png)
   
+  ### Series Character Dashboad
+  
+  ![Screen2](https://diegoarvz.s3-us-west-1.amazonaws.com/lexi_series_ss2.png)
+  
+  ### Episode Info
+  
   ![Screen5](https://diegoarvz.s3-us-west-1.amazonaws.com/lexi_series_ss5.png)
+  
+  ### Characters Relationships
+  
+  ![Screen3](https://diegoarvz.s3-us-west-1.amazonaws.com/lexi_series_ss3.png)
+  
   
 ## Future Features
 
