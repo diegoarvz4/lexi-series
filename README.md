@@ -9,6 +9,7 @@
 - PostgreSQL
 - AWS S3
 - Bootstrap 3
+- ActiveRecord
 
 ## Getting Started
 
