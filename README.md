@@ -1,6 +1,6 @@
 # LEXI Dubbing Series
 
-> This is a Ruby on Rails Application that works for making useful documentation for dubbing series purposes. You can create a series, add characters, relationships, tagging, upload images and more!
+Lexi Series is a web platform for dubbing houses. Directors, translators and QC's are able to access all dubbing-related information as promptly as possible. The front-end and back-end were built with Ruby on Rails. Bootstrap 3 components were used.
 
 ## Built With
 
