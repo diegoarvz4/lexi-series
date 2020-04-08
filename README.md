@@ -1,24 +1,80 @@
-# README
+# LEXI Dubbing Series
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Lexi Series is a web platform for dubbing houses. Directors, translators and QC's are able to access all dubbing-related information as promptly as possible. The front-end and back-end were built with Ruby on Rails. Bootstrap 3 components were used.
 
-Things you may want to cover:
+## Built With
 
-* Ruby version
+- Ruby on Rails
+- Devise
+- PostgreSQL
+- AWS S3
+- Bootstrap 3
+- ActiveRecord
 
-* System dependencies
+## Getting Started
 
-* Configuration
+To get a local copy up and running follow these simple example steps.
 
-* Database creation
+## Prerequisites
+- Ruby
+- Rails
+- PostgreSQL
+- A web Browser
 
-* Database initialization
+## Setup
+  Clone or download this Repository.
 
-* How to run the test suite
+## Install
+  Run the following command on your terminal: `$ bundle install`, this will install all the required dependencies necesary for you to run this project locally.
 
-* Services (job queues, cache servers, search engines, etc.)
+## Usage
+  Run the following command on your terminal: `$ rails s`, this will run a local server which can be accesed via a web browser in `https://localhost:3000`
 
-* Deployment instructions
+## Live
 
-* ...
+  https://shrouded-mountain-06720.herokuapp.com/
+
+## Screenshots and Walkthrough
+
+  https://www.loom.com/share/d070f39efef445a6bc966c64a09afb5c
+  
+  ### Series Dashboard
+  
+  ![Screen1](https://diegoarvz.s3-us-west-1.amazonaws.com/lexi_series_ss1.png "Series Dashboard")
+  
+  ### Index Characters
+  
+  ![Screen4](https://diegoarvz.s3-us-west-1.amazonaws.com/lexi_series_ss4.png)
+  
+  ### Series Character Dashboad
+  
+  ![Screen2](https://diegoarvz.s3-us-west-1.amazonaws.com/lexi_series_ss2.png)
+  
+  ### Episode Info
+  
+  ![Screen5](https://diegoarvz.s3-us-west-1.amazonaws.com/lexi_series_ss5.png)
+  
+  ### Characters Relationships
+  
+  ![Screen3](https://diegoarvz.s3-us-west-1.amazonaws.com/lexi_series_ss3.png)
+  
+  
+## Future Features
+
+- Email confirmation and password reset
+
+# Authors
+
+## 👤 **Diego Luis Arvizu Gutiérrez**
+
+- Github: [@diegoarvz4](https://github.com/diegoarvz4)
+- Twitter: [@Ddiegoarvz4](https://twitter.com/diegoarvz4)
+- Linkedin: [/in/diego-arvz](https://linkedin.com/linkedinhandle)
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## 📝 License
+
+This project is Licensed under MIT
