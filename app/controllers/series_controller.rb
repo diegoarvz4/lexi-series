@@ -40,6 +40,8 @@ class SeriesController < ApplicationController
   def destroy 
     @series = Series.find_by(id: params[:id])
     @series.destroy
+  rescue Excon::Error::Forbidden => error
+    puts error
     flash.notice = 'Serie eliminada'
     redirect_to series_index_path
   end  
